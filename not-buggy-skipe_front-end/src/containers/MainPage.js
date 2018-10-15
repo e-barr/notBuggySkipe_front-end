@@ -13,7 +13,7 @@ class MainPage extends Component {
                     <h1>Welcome, {this.props.currentUser.username}!</h1>
                         <ProfileTile user={this.props.currentUser}/>
                         <MeetingRoomsTile sentInvites={this.props.currentUser.sent_invites} receivedInvites={this.props.currentUser.received_invites} />
-                        <ContactsTile />
+                        <ContactsTile contacts={this.props.currentUser.contacts} />
                         <MeetingRoomDisplayTile />
                 </div>
             )
