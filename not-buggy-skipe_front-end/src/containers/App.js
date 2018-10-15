@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import LoginForm from './LoginForm'
+import Header from './Header'
+import MainPage from './MainPage'
 
 class App extends Component {
   state = {
@@ -12,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.token
 
-    fetch('http://localhost:3000/profile', {
+    fetch('http://localhost:3000/api/v1/profile', {
       method: "GET",
       headers: {
         'Authorization' : `Bearer ${token}`
@@ -67,15 +70,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      {this.state.currentUser ? <h1>Hello {this.state.currentUser.username}</h1> : null}
-        <header className="App-header">
-          <form onSubmit={this.login}>
-            <input type="text" placeholder="username" name="username" onChange={this.handleChange} />
-            <input type="password" placeholder="password" name="password" onChange={this.handleChange} />
-            <input type="submit" />
-          </form>
+      <div>
+        <header>
+          <Header />
         </header>
+        <div>
+          {this.state.currentUser !== null ? <MainPage currentUser={this.state.currentUser} /> : <LoginForm login={this.login} /> }
+        </div>
       </div>
     );
   }
