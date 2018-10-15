@@ -7,12 +7,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class MainPage extends Component {
     state = {
-        seletedRoom: null
+        selectedRoom: null
     }
 
-    onSelectRoom = id => {
+    onSelectRoom = room => {
         this.setState({
-            seletedRoom: id
+            selectedRoom: room
         })
     }
 
@@ -24,7 +24,7 @@ class MainPage extends Component {
                         <ProfileTile user={this.props.currentUser}/>
                         <MeetingRoomsTile sentInvites={this.props.currentUser.sent_invites} receivedInvites={this.props.currentUser.received_invites} onSelectRoom={this.onSelectRoom} />
                         <ContactsTile contacts={this.props.currentUser.contacts} />
-                        <MeetingRoomDisplayTile />
+                        {this.state.selectedRoom !== null ? <MeetingRoomDisplayTile selectedRoom={this.state.selectedRoom} /> : <div>Please select a meeting room to see further details.</div>}
                 </div>
             )
         } else {

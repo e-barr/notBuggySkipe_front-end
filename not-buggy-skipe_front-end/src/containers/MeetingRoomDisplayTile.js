@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 class MeetingRoomDisplayTile extends Component {
     render() {
         return (
-            <div>MEETING ROOM DISPLAY TILE; MEETING ROOM DETAILS HERE!</div>
+            <div className="meeting-room-display-tile">
+                <p>Room Name: {this.props.selectedRoom.name}</p>
+                <p>Current room count: {this.props.selectedRoom.person_count}</p>
+            </div>
         )
     }
 }
