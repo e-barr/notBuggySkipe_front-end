@@ -5,7 +5,8 @@ class ContactsTile extends Component {
         return (
             <div className="contacts-tile">
                 contacts tile
-                {this.props.contacts.map(contact => <li key={contact.id}>{contact.user_2.username}</li>)}
+                <button>+</button>
+                {this.props.contacts.map(contact => <li key={contact.id}>{contact.user_2.username} <button>X</button></li>)}
             </div>
         )
     }
