@@ -30,3 +30,13 @@
     transform: rotate(360deg);
   }
 }
+
+.profile-tile {
+  background-color: grey;
+  border-style: solid; 
+}
+
+.meeting-rooms-tile {
+  background-color: aliceblue;
+  border-style: solid;
+}

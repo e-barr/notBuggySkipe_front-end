@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 
 class MeetingRoomsTile extends Component {
     render () {
+        const allInvites = this.props.sentInvites.concat(this.props.receivedInvites)
         return (
-            <div>
-                MEETINGS ROOMS TILE, SELECT MEETING ROOM FROM HERE!!!
-            </div>   
+            <div className="meeting-rooms-tile">
+                MEETING ROOM TILE!
+                {allInvites.map(invite => <li key={invite.id}>sent by:{invite.sender.username} received by: {invite.receiver.username} room:{invite.room.name}</li>)}
+            </div>
         )
     }
 }

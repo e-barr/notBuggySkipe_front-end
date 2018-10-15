@@ -11,8 +11,8 @@ class MainPage extends Component {
             return (
                 <div>
                     <h1>Welcome, {this.props.currentUser.username}!</h1>
-                        <ProfileTile />
-                        <MeetingRoomsTile />
+                        <ProfileTile user={this.props.currentUser}/>
+                        <MeetingRoomsTile sentInvites={this.props.currentUser.sent_invites} receivedInvites={this.props.currentUser.received_invites} />
                         <ContactsTile />
                         <MeetingRoomDisplayTile />
                 </div>
