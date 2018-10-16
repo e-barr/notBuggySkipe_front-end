@@ -21,6 +21,7 @@ class MainPage extends Component {
             return (
                 <div>
                     <h1>Welcome, {this.props.currentUser.username}!</h1>
+                    <button onClick={this.props.logout}>Logout</button>
                         <ProfileTile user={this.props.currentUser}/>
                         <MeetingRoomsTile sentInvites={this.props.currentUser.sent_invites} receivedInvites={this.props.currentUser.received_invites} onSelectRoom={this.onSelectRoom} />
                         <ContactsTile contacts={this.props.currentUser.contacts} />

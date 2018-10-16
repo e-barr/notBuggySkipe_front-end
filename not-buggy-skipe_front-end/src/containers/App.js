@@ -19,8 +19,8 @@ class App extends Component {
       loginError: null
     })
 
-    localStorage.clear()
     this.props.history.push('/login')
+    localStorage.clear()
   }
 
   componentDidMount() {
@@ -80,11 +80,17 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-          {this.state.currentUser ? <MainPage currentUser={this.state.currentUser} /> : <LoginForm login={this.login} handleChange={this.handleChange} /> }
-      </div>
-    );
+    if (!this.state.currentUser) {
+      return (
+        <LoginForm login={this.login} handleChange={this.handleChange} />
+      )
+    } else {
+      return (
+        <div>
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} />
+        </div>
+      );
+    }
   }
 }
 

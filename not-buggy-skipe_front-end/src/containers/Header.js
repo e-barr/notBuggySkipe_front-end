@@ -6,7 +6,6 @@ class Header extends Component {
             return (
                 <div>
                     <strong>NotBuggySkipe</strong>
-                    <button onClick={this.props.logout}>Log out</button>
                 </div>
             )
     }
