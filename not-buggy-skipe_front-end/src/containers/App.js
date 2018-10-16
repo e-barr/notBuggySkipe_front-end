@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginForm from './LoginForm'
-import Header from './Header'
 import MainPage from './MainPage'
 
 class App extends Component {
@@ -10,6 +9,18 @@ class App extends Component {
     password: '',
     currentUser: null,
     loginError: null
+  }
+  
+  logout = event => {
+    this.setState({
+      username: '',
+      password: '',
+      currentUser: null,
+      loginError: null
+    })
+
+    localStorage.clear()
+    this.props.history.push('/login')
   }
 
   componentDidMount() {
@@ -71,12 +82,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header>
-          <Header />
-        </header>
-        <div>
-          {this.state.currentUser !== null ? <MainPage currentUser={this.state.currentUser} /> : <LoginForm login={this.login} /> }
-        </div>
+          {this.state.currentUser ? <MainPage currentUser={this.state.currentUser} /> : <LoginForm login={this.login} handleChange={this.handleChange} /> }
       </div>
     );
   }

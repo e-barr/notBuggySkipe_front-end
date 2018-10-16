@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 
 class Header extends Component {
     render() {
-        return (
-            <div><strong>I AM A HEADER!!!!!!</strong></div>
-        )
+        console.log(this.props)
+            return (
+                <div>
+                    <strong>NotBuggySkipe</strong>
+                    <button onClick={this.props.logout}>Log out</button>
+                </div>
+            )
     }
 }
 

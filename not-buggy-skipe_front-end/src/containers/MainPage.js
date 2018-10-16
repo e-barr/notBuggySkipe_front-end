@@ -3,7 +3,7 @@ import ProfileTile from './ProfileTile'
 import MeetingRoomsTile from './MeetingRoomsTile'
 import ContactsTile from './ContactsTile'
 import MeetingRoomDisplayTile from './MeetingRoomDisplayTile'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+// import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class MainPage extends Component {
     state = {
@@ -29,7 +29,7 @@ class MainPage extends Component {
             )
         } else {
             return (
-            <div>LOADING ****'S INFORMATION !!!!</div>
+            <div>Hi</div>
             )
         }
     }
