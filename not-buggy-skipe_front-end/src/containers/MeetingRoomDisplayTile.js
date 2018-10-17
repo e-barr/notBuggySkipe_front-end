@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 
 class MeetingRoomDisplayTile extends Component {
     render() {
+        console.log(this.props)
         return (
             <div className="meeting-room-display-tile">
                 <p>Room Name: {this.props.selectedRoom.name}</p>
-                <button onClick={() => this.props.addMeetingId(this.props.selectedRoom.id)}>JOIN</button>
+                {this.props.meetingId === this.props.selectedRoom.id ? <button onClick={this.props.leaveMeeting}>LEAVE MEETING</button> : <button onClick={() => this.props.addMeetingId(this.props.selectedRoom.id)}>JOIN</button> }
             </div>
         )
     }

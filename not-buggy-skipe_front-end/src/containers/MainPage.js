@@ -25,7 +25,7 @@ class MainPage extends Component {
                         <ProfileTile user={this.props.currentUser}/>
                         <MeetingRoomsTile sentInvites={this.props.currentUser.sent_invites} receivedInvites={this.props.currentUser.received_invites} onSelectRoom={this.onSelectRoom} />
                         <ContactsTile contacts={this.props.currentUser.contacts} />
-                        {this.state.selectedRoom !== null ? <MeetingRoomDisplayTile selectedRoom={this.state.selectedRoom} addMeetingId={this.props.addMeetingId} /> : <div>Please select a meeting room to see further details.</div>}
+                        {this.state.selectedRoom ? <MeetingRoomDisplayTile selectedRoom={this.state.selectedRoom} addMeetingId={this.props.addMeetingId} meetingId={this.props.currentUser.meeting_id} leaveMeeting={this.props.leaveMeeting} /> : <div>Please select a meeting room to see further details.</div>}
                 </div>
             )
         } else {

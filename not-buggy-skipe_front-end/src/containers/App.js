@@ -43,8 +43,37 @@ class App extends Component {
   }
 
   addMeetingId = meeting_id => {
-    debugger;
+    if (this.state.currentUser.meeting_id) {
+      alert('You may only be in one meeting at a time. Please exit your current meeting before joining another one.')
+      return;
+    }
     const currentUser = {...this.state.currentUser, meeting_id }
+    this.setState({ currentUser }, () => {
+        fetch('http://localhost:3000/api/v1/profile', {
+        method: "PATCH",
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          user: { ...currentUser, id: currentUser.id }
+         })
+        }
+      )
+      .then(resp => resp.json())
+      .then(resp => console.log(resp))
+
+    })
+  }
+
+
+  leaveMeeting = () => {
+    if (!this.state.currentUser.meeting_id) {
+      alert('You are currently not in a meeting. Please join a group to leave.')
+      return;
+    }
+
+    const currentUser = {...this.state.currentUser, meeting_id: null }
     this.setState({ currentUser }, () => {
         fetch('http://localhost:3000/api/v1/profile', {
         method: "PATCH",
@@ -108,7 +137,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} />
         </div>
       );
     
