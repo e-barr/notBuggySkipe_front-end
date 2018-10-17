@@ -61,7 +61,10 @@ class App extends Component {
         }
       )
       .then(resp => resp.json())
-      .then(resp => console.log(resp))
+      .then(resp => this.setState({
+        currentUser: resp.user
+      }))
+      .then(resp => console.log(this.state.currentUser))
 
     })
   }
@@ -87,7 +90,10 @@ class App extends Component {
         }
       )
       .then(resp => resp.json())
-      .then(resp => console.log(resp))
+      .then(resp => this.setState({
+        currentUser: resp.user
+      }))
+      .then(console.log(`${this.state.currentUser.username} has left`, this.state.currentUser))
 
     })
   }

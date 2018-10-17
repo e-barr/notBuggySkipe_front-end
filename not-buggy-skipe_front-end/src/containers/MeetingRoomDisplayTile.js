@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class MeetingRoomDisplayTile extends Component {
     render() {
-        console.log(this.props)
         return (
             <div className="meeting-room-display-tile">
                 <p>Room Name: {this.props.selectedRoom.name}</p>

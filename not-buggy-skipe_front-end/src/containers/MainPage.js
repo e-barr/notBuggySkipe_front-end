@@ -3,6 +3,7 @@ import ProfileTile from './ProfileTile'
 import MeetingRoomsTile from './MeetingRoomsTile'
 import ContactsTile from './ContactsTile'
 import MeetingRoomDisplayTile from './MeetingRoomDisplayTile'
+import MeetingRoom from './MeetingRoom'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 class MainPage extends Component {
@@ -26,6 +27,7 @@ class MainPage extends Component {
                         <MeetingRoomsTile sentInvites={this.props.currentUser.sent_invites} receivedInvites={this.props.currentUser.received_invites} onSelectRoom={this.onSelectRoom} />
                         <ContactsTile contacts={this.props.currentUser.contacts} />
                         {this.state.selectedRoom ? <MeetingRoomDisplayTile selectedRoom={this.state.selectedRoom} addMeetingId={this.props.addMeetingId} meetingId={this.props.currentUser.meeting_id} leaveMeeting={this.props.leaveMeeting} /> : <div>Please select a meeting room to see further details.</div>}
+                        {this.props.currentUser && this.props.currentUser.meeting_id ? <MeetingRoom room={this.props.currentUser.meeting_room} /> : null }
                 </div>
             )
         } else {
