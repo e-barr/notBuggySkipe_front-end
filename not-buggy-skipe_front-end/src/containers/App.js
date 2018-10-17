@@ -42,6 +42,27 @@ class App extends Component {
     })
   }
 
+  addMeetingId = meeting_id => {
+    debugger;
+    const currentUser = {...this.state.currentUser, meeting_id }
+    this.setState({ currentUser }, () => {
+        fetch('http://localhost:3000/api/v1/profile', {
+        method: "PATCH",
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          user: { ...currentUser, id: currentUser.id }
+         })
+        }
+      )
+      .then(resp => resp.json())
+      .then(resp => console.log(resp))
+
+    })
+  }
+
 
   handleChange = event => {
     this.setState({
@@ -84,13 +105,13 @@ class App extends Component {
       return (
         <LoginForm login={this.login} handleChange={this.handleChange} />
       )
-    } else {
+    } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} />
         </div>
       );
-    }
+    
   }
 }
 

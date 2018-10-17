@@ -5,7 +5,7 @@ class MeetingRoomDisplayTile extends Component {
         return (
             <div className="meeting-room-display-tile">
                 <p>Room Name: {this.props.selectedRoom.name}</p>
-                <p>Current room count: {this.props.selectedRoom.person_count}</p>
+                <button onClick={() => this.props.addMeetingId(this.props.selectedRoom.id)}>JOIN</button>
             </div>
         )
     }
