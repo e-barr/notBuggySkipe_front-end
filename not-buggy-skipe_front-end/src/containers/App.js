@@ -8,7 +8,8 @@ class App extends Component {
     username: '',
     password: '',
     currentUser: null,
-    loginError: null
+    loginError: null,
+    editingProfile: false
   }
   
   logout = event => {
@@ -16,11 +17,43 @@ class App extends Component {
       username: '',
       password: '',
       currentUser: null,
-      loginError: null
+      loginError: null,
+      editingProfile: false
     })
 
     this.props.history.push('/login')
     localStorage.clear()
+  }
+
+  editUser = event => {
+    event.preventDefault()
+    this.setState({
+      editingProfile: true
+    })
+  }
+
+  profileChangesConfirmed = ({ email, username, city, country, image_url, id }) => {
+    const currentUser = {...this.state.currentUser, email, username, city, country, image_url }
+    
+    fetch('http://localhost:3000/api/v1/profile', {
+      method: "PATCH",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        user: {...currentUser, id: currentUser.id }
+      })
+    })
+    .then(resp => resp.json())
+    .then(resp => this.setState({
+      currentUser: resp.user
+    }))
+    .then(resp => console.log(this.state.currentUser))
+
+    this.setState({
+      editingProfile: false
+    })
   }
 
   componentDidMount() {
@@ -143,7 +176,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} />
         </div>
       );
     

@@ -11,7 +11,7 @@ class ProfileTile extends Component {
                     <ul>Email: {email}</ul>
                     <ul>Received Invites: {received_invites.length}</ul>
                     <ul>Sent Invites: {sent_invites.length}</ul>
-                    <button>Edit</button>
+                    <button onClick={this.props.editUser}>Edit</button>
                 </div>
             </div>
         )
