@@ -14,6 +14,27 @@ class App extends Component {
     allUsers: []
   }
 
+  addContact = (user_1, user_2) => {
+    fetch('http://localhost:3000/api/v1/contacts', {
+      method: "POST",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        contact: {
+          user_1_id: user_1.id,
+          user_2_id: user_2.id
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(resp => this.setState({
+      currentUser: resp.user
+    }))
+    .then(resp => console.log(this.state.currentUser))
+  }
+
   viewUsers = () => {
     this.setState({
       viewingUsers: true
@@ -28,7 +49,7 @@ class App extends Component {
     })
     .then(resp => resp.json())
     .then(resp => this.setState({
-      allUsers: resp.users
+      allUsers: resp
     }))
   }
 
@@ -214,7 +235,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} />
         </div>
       );
     
