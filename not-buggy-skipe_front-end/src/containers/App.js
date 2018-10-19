@@ -9,7 +9,45 @@ class App extends Component {
     password: '',
     currentUser: null,
     loginError: null,
-    editingProfile: false
+    editingProfile: false,
+    viewingUsers: false,
+    allUsers: []
+  }
+
+  viewUsers = () => {
+    this.setState({
+      viewingUsers: true
+    })
+
+    fetch('http://localhost:3000/api/v1/users', {
+      method: "GET",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(resp => this.setState({
+      allUsers: resp.users
+    }))
+  }
+
+  removeContact = id => {
+      fetch('http://localhost:3000/api/v1/contacts', {
+      method: "DELETE",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        contact: { id }
+      })
+    })
+    .then(resp => resp.json())
+    .then(resp => this.setState({
+      currentUser: resp.user
+    }))
+    .then(resp => console.log(this.state.currentUser))
   }
   
   logout = event => {
@@ -176,7 +214,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} />
         </div>
       );
     
