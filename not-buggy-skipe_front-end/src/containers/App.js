@@ -14,6 +14,25 @@ class App extends Component {
     allUsers: []
   }
 
+  deleteInvite = (id, user_id) => {
+    debugger
+    fetch('http://localhost:3000/api/v1/invites', {
+      method: "DELETE",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        invite: { id, user_id }
+      })
+    })
+    .then(resp => resp.json())
+    .then(resp => this.setState({
+      currentUser: resp.user
+    }))
+    .then(resp => console.log(this.state.currentUser))
+  }
+
   addContact = (user_1, user_2) => {
     fetch('http://localhost:3000/api/v1/contacts', {
       method: "POST",
@@ -235,7 +254,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} deleteInvite={this.deleteInvite} />
         </div>
       );
     
