@@ -77,7 +77,7 @@ class App extends Component {
     .then(resp => console.log(this.state.currentUser))
   }
 
-  addContact = (user_1, user_2) => {
+  addContact = (user_1_id, user_2_id) => {
     fetch('http://localhost:3000/api/v1/contacts', {
       method: "POST",
       headers: {
@@ -86,8 +86,8 @@ class App extends Component {
       },
       body: JSON.stringify({
         contact: {
-          user_1_id: user_1.id,
-          user_2_id: user_2.id
+          user_1_id,
+          user_2_id
         }
       })
     })
