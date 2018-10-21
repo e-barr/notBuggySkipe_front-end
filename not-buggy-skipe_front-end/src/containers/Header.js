@@ -5,6 +5,7 @@ class Header extends Component {
             return (
                 <div>
                     <strong>NotBuggySkipe</strong>
+                    <p>{this.props.children}</p>
                 </div>
             )
     }

@@ -3,7 +3,9 @@ import React from 'react'
 const About = props => {
     return (
         <div>
-            THIS IS THE ABOUT PAGE.
+            <div className="about-tile">
+                This is a demo video chat app, created by <a href="https://github.com/e-barr">e-barr</a>
+            </div>
         </div>
     )
 }
