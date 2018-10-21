@@ -11,11 +11,55 @@ class App extends Component {
     loginError: null,
     editingProfile: false,
     viewingUsers: false,
-    allUsers: []
+    allUsers: [],
+    creatingInvite: false,
+    senderId: null,
+    receiverId: null
+  }
+
+  sendInvite = (sender_id, receiver_id, content, room_name) => {
+    fetch('http://localhost:3000/api/v1/invites', {
+      method: "POST",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        invite: {
+          sender_id,
+          receiver_id,
+          room_name,
+          content
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(resp => this.setState({
+      currentUser: resp.user
+    }))
+
+    this.setState({
+      creatingInvite: false,
+      senderId: null,
+      receiverId: null
+    })
+  }
+
+  createInvite = (sender_id, receiver_id) => {
+    this.setState({
+      creatingInvite: true,
+      senderId: sender_id,
+      receiverId: receiver_id
+    })
+  }
+
+  closeInviteForm = () => {
+    this.setState({
+      creatingInvite: false
+    })
   }
 
   deleteInvite = (id, user_id) => {
-    debugger
     fetch('http://localhost:3000/api/v1/invites', {
       method: "DELETE",
       headers: {
@@ -107,6 +151,12 @@ class App extends Component {
     event.preventDefault()
     this.setState({
       editingProfile: true
+    })
+  }
+
+  closeEditProfile = () => {
+    this.setState({
+      editingProfile: false
     })
   }
 
@@ -254,7 +304,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} deleteInvite={this.deleteInvite} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} closeEditProfile={this.closeEditProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} deleteInvite={this.deleteInvite} creatingInvite={this.state.creatingInvite} createInvite={this.createInvite} closeInviteForm={this.closeInviteForm} setSenderIdReceiverId={this.setSenderIdReceiverId} senderId={this.state.senderId} receiverId={this.state.receiverId} sendInvite={this.sendInvite} />
         </div>
       );
     

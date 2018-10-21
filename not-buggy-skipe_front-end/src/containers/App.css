@@ -50,3 +50,13 @@
   background-color: aquamarine;
   border-style: solid;
 }
+
+.edit-profile-tile {
+  background-color: pink;
+  border-style: solid;
+}
+
+.invite-form-tile {
+  background-color: green;
+  border-style: solid;
+}

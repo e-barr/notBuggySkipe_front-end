@@ -20,6 +20,7 @@ class EditProfile extends Component {
         console.log(this)
         return (
             <div className="edit-profile-tile">
+            <button onClick={this.props.closeEditProfile}>X</button>
             <form onSubmit={() => this.props.profileChangesConfirmed(this.state)}>
                 <p>Image URL:<input type="text" name="image_url" value={this.state.image_url} onChange={this.onChange} /></p>
                 <p>Username:<input type="text" name="username" value={this.state.username} onChange={this.onChange} /></p>
