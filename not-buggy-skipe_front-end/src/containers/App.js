@@ -14,7 +14,8 @@ class App extends Component {
     allUsers: [],
     creatingInvite: false,
     senderId: null,
-    receiverId: null
+    receiverId: null,
+    receiverName: null
   }
 
   sendInvite = (sender_id, receiver_id, content, room_name) => {
@@ -45,11 +46,12 @@ class App extends Component {
     })
   }
 
-  createInvite = (sender_id, receiver_id) => {
+  createInvite = (sender_id, receiver_id, receiverName) => {
     this.setState({
       creatingInvite: true,
       senderId: sender_id,
-      receiverId: receiver_id
+      receiverId: receiver_id,
+      receiverName
     })
   }
 
@@ -304,7 +306,7 @@ class App extends Component {
     } 
       return (
         <div>
-            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} closeEditProfile={this.closeEditProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} deleteInvite={this.deleteInvite} creatingInvite={this.state.creatingInvite} createInvite={this.createInvite} closeInviteForm={this.closeInviteForm} setSenderIdReceiverId={this.setSenderIdReceiverId} senderId={this.state.senderId} receiverId={this.state.receiverId} sendInvite={this.sendInvite} />
+            <MainPage currentUser={this.state.currentUser} logout={this.logout} addMeetingId={this.addMeetingId} leaveMeeting={this.leaveMeeting} editingProfile={this.state.editingProfile} closeEditProfile={this.closeEditProfile} editUser={this.editUser} profileChangesConfirmed={this.profileChangesConfirmed} removeContact={this.removeContact} viewUsers={this.viewUsers} allUsers={this.state.allUsers} viewingUsers={this.state.viewingUsers} addContact={this.addContact} deleteInvite={this.deleteInvite} creatingInvite={this.state.creatingInvite} createInvite={this.createInvite} closeInviteForm={this.closeInviteForm} setSenderIdReceiverId={this.setSenderIdReceiverId} senderId={this.state.senderId} receiverId={this.state.receiverId} sendInvite={this.sendInvite} receiverName={this.state.receiverName} />
         </div>
       );
     
