@@ -12,12 +12,9 @@ class ViewUsersTile extends Component {
         const finalList = initialfilteredUsers.filter(user => finalListIds.includes(user.id))
         const potentialContacts = finalList.map(user => { return <li key={user.id} >{user.username}<button onClick={() => this.props.addContact(currentUser.id, user.id)}>add</button></li>})
 
-        // console.log(this.props)
         return(
             <div>
-                <p>
-                    THIS IS THE VIEW USERS TILE! SO YOU CAN ADD THESE PEOPLE AS CONTACTS!
-                </p>
+                USERS
                 <ul>{potentialContacts}</ul>
             </div>
         )
