@@ -15,7 +15,7 @@ class ViewUsersTile extends Component {
         return(
             <div>
                 USERS
-                <ul>{potentialContacts}</ul>
+                <ul>{potentialContacts.length > 0 ? potentialContacts : <div>All current users are your contacts.</div>}</ul>
             </div>
         )
     }

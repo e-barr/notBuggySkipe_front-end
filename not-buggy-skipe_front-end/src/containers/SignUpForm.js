@@ -49,7 +49,7 @@ class SignUpForm extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="signup-form">
                 <h2>Sign Up</h2>
                     <form onSubmit={(event) => this.onSubmitSignUpForm(event, this.state)}>
                         <p>Email: <input type="text" name="email" onChange={this.onChangeInput}/></p>
@@ -60,7 +60,7 @@ class SignUpForm extends Component {
                         <p>Country: <input type="text" name="country" onChange={this.onChangeInput} /></p>
                         <p>Image URL: <input type="text" name="image_url" onChange={this.onChangeInput} /></p>
         
-                        <button>Continue</button>
+                        <button className="button button-alt intro-button">Continue</button>
                     </form>
             </div>
 

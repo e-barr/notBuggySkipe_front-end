@@ -137,6 +137,22 @@ class App extends Component {
   }
   
   logout = event => {
+    const currentUser = {...this.state.currentUser }
+    
+    fetch('http://localhost:3000/api/v1/profile', {
+      method: "PATCH",
+      headers: {
+        'Content-Type' : 'application/json',
+        'Authorization' : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        user: {...currentUser, meeting_id: null }
+      })
+    })
+
+    this.setState({
+      editingProfile: false
+    })
     this.setState({
       username: '',
       password: '',

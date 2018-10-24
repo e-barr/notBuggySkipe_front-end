@@ -545,3 +545,69 @@ div.edit-profile-tile {
   border-radius: 10px;
 }
 
+.login-form {
+    font-weight: bold;
+    padding: 2em 2em;
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form {
+  font-weight: bold;
+  padding: 2em 2em;
+  display: inline-block;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.signup-form input {
+  width: 1000px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.about-tile {
+  background-color: white;
+  height: 1000px;
+  color: black;
+  padding: 2em 2em;
+}
+
+.contact-us-tile {
+  background-color: white;
+  height: 1000px;
+  color: black;
+  padding: 2em 2em;
+}
+
+.intro-button {
+  background-color: white;
+  color: black;
+}
+
+/* .button {
+  background-color: #FFF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+} */
+
