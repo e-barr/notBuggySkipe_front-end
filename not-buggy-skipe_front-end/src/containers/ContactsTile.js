@@ -6,8 +6,8 @@ class ContactsTile extends Component {
         return (
             <div className="contacts-tile">
                 <p>ADDRESS BOOK</p>
-                <button onClick={viewUsers}>ADD NEW CONTACTS</button>
-                { contacts.length > 0 ? <div>{contacts.map(contact => <li key={contact.id}>{contact.user_2.username} <button onClick={() => removeContact(contact.id)}>DELETE CONTACT</button><button onClick={() => createInvite(currentUserId, contact.user_2.id, contact.user_2.username)}>SEND INVITE</button></li>)}</div> : <p>You currently have no contacts.</p>}
+                <button onClick={viewUsers} className="view">VIEW NEW CONTACTS</button>
+                { contacts.length > 0 ? <div>{contacts.map(contact => <li key={contact.id}>{contact.user_2.username}<button onClick={() => createInvite(currentUserId, contact.user_2.id, contact.user_2.username)} className="add">SEND INVITE</button><button onClick={() => removeContact(contact.id)} className="delete">DELETE</button></li>)}</div> : <p>You currently have no contacts.</p>}
             </div>
         )
     }

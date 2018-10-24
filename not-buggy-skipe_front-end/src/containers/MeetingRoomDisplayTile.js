@@ -6,7 +6,7 @@ class MeetingRoomDisplayTile extends Component {
         return (
             <div className="meeting-room-display-tile">
                 <p>Room Name: {this.props.selectedRoom.name}</p>
-                {this.props.meetingId === this.props.selectedRoom.id ? <button onClick={this.props.leaveMeeting}>LEAVE MEETING</button> : <button onClick={() => this.props.addMeetingId(this.props.selectedRoom.id)}>JOIN</button> }
+                {this.props.meetingId === this.props.selectedRoom.id ? <button onClick={this.props.leaveMeeting} className="delete">LEAVE MEETING</button> : <button onClick={() => this.props.addMeetingId(this.props.selectedRoom.id)}className="add">JOIN</button> }
             </div>
         )
     }

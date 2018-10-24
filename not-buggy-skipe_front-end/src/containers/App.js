@@ -101,21 +101,28 @@ class App extends Component {
   }
 
   viewUsers = () => {
-    this.setState({
-      viewingUsers: true
-    })
+    if (this.state.viewingUsers) {
+      this.setState({
+        viewingUsers: false
+      })
+    } else {
 
-    fetch('http://localhost:3000/api/v1/users', {
-      method: "GET",
-      headers: {
-        'Content-Type' : 'application/json',
-        'Authorization' : `Bearer ${localStorage.token}`
-      }
-    })
-    .then(resp => resp.json())
-    .then(resp => this.setState({
-      allUsers: resp
-    }))
+      this.setState({
+        viewingUsers: true
+      })
+
+      fetch('http://localhost:3000/api/v1/users', {
+        method: "GET",
+        headers: {
+          'Content-Type' : 'application/json',
+          'Authorization' : `Bearer ${localStorage.token}`
+        }
+      })
+      .then(resp => resp.json())
+      .then(resp => this.setState({
+        allUsers: resp
+      }))
+    }
   }
 
   removeContact = id => {
