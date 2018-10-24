@@ -6,15 +6,15 @@ class MeetingRoom extends Component {
             return (
                 <div>
                     <h3>
-                        WELCOME TO THE ROOM CALLED {this.props.room.name}
+                        {this.props.room.name}
                     </h3>
                    
 
                     <p>
                         <iframe title={this.props.room.name}
                             src={`https://tokbox.com/embed/embed/ot-embed.js?embedId=cb6af7f6-5ac4-4691-9850-07636964bfb7&room=${this.props.room.name}&iframe=true`}
-                            width="100%"
-                            height="100%"
+                            width="80%"
+                            height="720px"
                             allow="microphone; camera"
                             ></iframe>
                         </p>

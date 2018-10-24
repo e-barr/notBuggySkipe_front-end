@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 class ContactsTile extends Component {
     render() {
         const { viewUsers, contacts, removeContact, createInvite, currentUserId } = this.props
-        console.log(contacts)
         return (
             <div className="contacts-tile">
                 <p>ADDRESS BOOK</p>

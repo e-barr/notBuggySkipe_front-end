@@ -21,14 +21,16 @@ class EditProfile extends Component {
         const { image_url, username, city, country, email } = this.state
         return (
             <div className="edit-profile-tile">
-            <button onClick={closeEditProfile}>X</button>
             <form onSubmit={() => profileChangesConfirmed(this.state)}>
-                <p>Image URL:<input type="text" name="image_url" value={image_url} onChange={this.onChange} /></p>
-                <p>Username:<input type="text" name="username" value={username} onChange={this.onChange} /></p>
-                <p>City:<input type="text" name="city" value={city} onChange={this.onChange} /></p>
-                <p>Country:<input type="text" name="country" value={country} onChange={this.onChange} /></p>
-                <p>Email:<input type="text" name="email" value={email} onChange={this.onChange} /></p>
+                <p>Image URL
+                    <input type="text" name="image_url" value={image_url} onChange={this.onChange} />
+                </p>
+                <p>Username<input type="text" name="username" value={username} onChange={this.onChange} /></p>
+                <p>City<input type="text" name="city" value={city} onChange={this.onChange} /></p>
+                <p>Country<input type="text" name="country" value={country} onChange={this.onChange} /></p>
+                <p>Email<input type="text" name="email" value={email} onChange={this.onChange} /></p>
                 <button>Confirm Changes</button>
+                <button onClick={closeEditProfile}>Cancel</button>
 
             </form>
             </div>
