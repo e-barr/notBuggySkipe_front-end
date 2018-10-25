@@ -1,7 +1,7 @@
 {
   "main.css": "/notBuggySkipe_front-end/static/css/main.019b8efd.chunk.css",
-  "main.js": "/notBuggySkipe_front-end/static/js/main.2157f03f.chunk.js",
-  "main.js.map": "/notBuggySkipe_front-end/static/js/main.2157f03f.chunk.js.map",
+  "main.js": "/notBuggySkipe_front-end/static/js/main.56af8f45.chunk.js",
+  "main.js.map": "/notBuggySkipe_front-end/static/js/main.56af8f45.chunk.js.map",
   "static/js/1.9d546f8a.chunk.js": "/notBuggySkipe_front-end/static/js/1.9d546f8a.chunk.js",
   "static/js/1.9d546f8a.chunk.js.map": "/notBuggySkipe_front-end/static/js/1.9d546f8a.chunk.js.map",
   "runtime~main.js": "/notBuggySkipe_front-end/static/js/runtime~main.2136f54c.js",
@@ -9,6 +9,6 @@
   "static/media/App.css": "/notBuggySkipe_front-end/static/media/unsplash2.cc647efc.jpg",
   "static/css/main.019b8efd.chunk.css.map": "/notBuggySkipe_front-end/static/css/main.019b8efd.chunk.css.map",
   "index.html": "/notBuggySkipe_front-end/index.html",
-  "precache-manifest.5155e98fadddf2774ed5764c0fb345c5.js": "/notBuggySkipe_front-end/precache-manifest.5155e98fadddf2774ed5764c0fb345c5.js",
+  "precache-manifest.6fa210cbdf9417ca0a5bfed2d265a4ba.js": "/notBuggySkipe_front-end/precache-manifest.6fa210cbdf9417ca0a5bfed2d265a4ba.js",
   "service-worker.js": "/notBuggySkipe_front-end/service-worker.js"
 }

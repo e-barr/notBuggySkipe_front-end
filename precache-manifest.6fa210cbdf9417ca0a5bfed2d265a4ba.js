@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/notBuggySkipe_front-end/static/js/runtime~main.2136f54c.js"
   },
   {
-    "revision": "2157f03ff8084853bde3",
-    "url": "/notBuggySkipe_front-end/static/js/main.2157f03f.chunk.js"
+    "revision": "56af8f45bf3166ee1360",
+    "url": "/notBuggySkipe_front-end/static/js/main.56af8f45.chunk.js"
   },
   {
     "revision": "9d546f8a666d20f6483b",
     "url": "/notBuggySkipe_front-end/static/js/1.9d546f8a.chunk.js"
   },
   {
-    "revision": "2157f03ff8084853bde3",
+    "revision": "56af8f45bf3166ee1360",
     "url": "/notBuggySkipe_front-end/static/css/main.019b8efd.chunk.css"
   },
   {
-    "revision": "7908947bb702c503ae8d8721ddd31b27",
+    "revision": "fef4d5afadc47928efec00021a7173d9",
     "url": "/notBuggySkipe_front-end/index.html"
   }
 ];
