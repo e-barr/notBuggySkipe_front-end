@@ -64,7 +64,7 @@ class App extends Component {
   }
 
   deleteInvite = (id, user_id) => {
-    fetch(`${ROOM_URL}/api/v1/invites`, {
+    fetch(`${ROOT_URL}/api/v1/invites`, {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json',
