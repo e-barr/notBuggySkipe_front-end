@@ -3,7 +3,7 @@ import './App.css';
 import LoginForm from './LoginForm'
 import MainPage from './MainPage'
 
-ROOT_URL = 'https://e-barr.github.io/notBuggySkipe_front-end'
+const ROOT_URL = 'https://e-barr.github.io/notBuggySkipe_front-end'
 
 class App extends Component {
   state = {
