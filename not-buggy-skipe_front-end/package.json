@@ -28,6 +28,7 @@
     "node": "7.8.0",
     "npm": "4.2.0"
   },
+  "homepage": "https://e-barr.github.io/notBuggySkipe_front-end/",
   "react-scripts": "1.0.7",
   "browserslist": [
     ">0.2%",
