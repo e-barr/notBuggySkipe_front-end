@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+const ROOT_URL = 'https://not-buggy-skipe.herokuapp.com'
 class SignUpForm extends Component {
     state = {
         email: '',
@@ -20,7 +21,7 @@ class SignUpForm extends Component {
     onSubmitSignUpForm = (event, state) => {
         event.preventDefault()
         if (state.password === state.confirmPassword) {
-            fetch('http://localhost:3000/api/v1/users', {
+            fetch(`${ROOT_URL}/api/v1/users`, {
                 method: "POST",
                 body: JSON.stringify({
                     user: {

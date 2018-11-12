@@ -3,6 +3,8 @@ import './App.css';
 import LoginForm from './LoginForm'
 import MainPage from './MainPage'
 
+const ROOT_URL = 'https://not-buggy-skipe.herokuapp.com'
+
 class App extends Component {
   state = {
     username: '',
@@ -19,7 +21,7 @@ class App extends Component {
   }
 
   sendInvite = (sender_id, receiver_id, content, room_name) => {
-    fetch('http://localhost:3000/api/v1/invites', {
+    fetch(`${ROOT_URL}/api/v1/invites`, {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json',
@@ -62,7 +64,7 @@ class App extends Component {
   }
 
   deleteInvite = (id, user_id) => {
-    fetch('http://localhost:3000/api/v1/invites', {
+    fetch(`${ROOT_URL}/api/v1/invites`, {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json',
@@ -80,7 +82,7 @@ class App extends Component {
   }
 
   addContact = (user_1_id, user_2_id) => {
-    fetch('http://localhost:3000/api/v1/contacts', {
+    fetch(`${ROOT_URL}/api/v1/contacts`, {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json',
@@ -111,7 +113,7 @@ class App extends Component {
         viewingUsers: true
       })
 
-      fetch('http://localhost:3000/api/v1/users', {
+      fetch(`${ROOT_URL}/api/v1/users`, {
         method: "GET",
         headers: {
           'Content-Type' : 'application/json',
@@ -126,7 +128,7 @@ class App extends Component {
   }
 
   removeContact = id => {
-      fetch('http://localhost:3000/api/v1/contacts', {
+      fetch(`${ROOT_URL}/api/v1/contacts`, {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json',
@@ -146,7 +148,7 @@ class App extends Component {
   logout = event => {
     const currentUser = {...this.state.currentUser }
     
-    fetch('http://localhost:3000/api/v1/profile', {
+    fetch(`${ROOT_URL}/api/v1/profile`, {
       method: "PATCH",
       headers: {
         'Content-Type' : 'application/json',
@@ -188,7 +190,7 @@ class App extends Component {
   profileChangesConfirmed = ({ email, username, city, country, image_url, id }) => {
     const currentUser = {...this.state.currentUser, email, username, city, country, image_url }
     
-    fetch('http://localhost:3000/api/v1/profile', {
+    fetch(`${ROOT_URL}/api/v1/profile`, {
       method: "PATCH",
       headers: {
         'Content-Type' : 'application/json',
@@ -212,7 +214,7 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.token
 
-    fetch('http://localhost:3000/api/v1/profile', {
+    fetch(`${ROOT_URL}/api/v1/profile`, {
       method: "GET",
       headers: {
         'Authorization' : `Bearer ${token}`
@@ -235,7 +237,7 @@ class App extends Component {
     }
     const currentUser = {...this.state.currentUser, meeting_id }
     this.setState({ currentUser }, () => {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch(`${ROOT_URL}/api/v1/profile`, {
         method: "PATCH",
         headers: {
           'Content-Type' : 'application/json',
@@ -264,7 +266,7 @@ class App extends Component {
 
     const currentUser = {...this.state.currentUser, meeting_id: null }
     this.setState({ currentUser }, () => {
-        fetch('http://localhost:3000/api/v1/profile', {
+        fetch(`${ROOT_URL}/api/v1/profile`, {
         method: "PATCH",
         headers: {
           'Content-Type' : 'application/json',
@@ -294,7 +296,7 @@ class App extends Component {
   login = event => {
     event.preventDefault()
 
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch(`${ROOT_URL}/api/v1/login`, {
       method: "POST",
       body: JSON.stringify({
         user: {

@@ -10,7 +10,7 @@ class ViewUsersTile extends Component {
         const finalListIds = initialfilteredUsersIds.filter(id => currentContactsIds.includes(id) === false)
         
         const finalList = initialfilteredUsers.filter(user => finalListIds.includes(user.id))
-        const potentialContacts = finalList.map(user => { return <li key={user.id} >{user.username}<button onClick={() => this.props.addContact(currentUser.id, user.id)}>add</button></li>})
+        const potentialContacts = finalList.map(user => { return <li key={user.id} >{user.username}<button onClick={() => this.props.addContact(currentUser.id, user.id)} className="add">add</button></li>})
 
         return(
             <div>
