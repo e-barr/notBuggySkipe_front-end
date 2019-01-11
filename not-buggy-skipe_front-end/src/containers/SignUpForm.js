@@ -50,19 +50,22 @@ class SignUpForm extends Component {
     }
     render() {
         return (
-            <div className="signup-form">
+            <div className="inner-content">
                 <h2>Sign Up</h2>
+                <div>
+
                     <form onSubmit={(event) => this.onSubmitSignUpForm(event, this.state)}>
-                        <p>Email: <input type="text" name="email" onChange={this.onChangeInput}/></p>
-                        <p>Username: <input type="text" name="username" onChange={this.onChangeInput} /></p>
-                        <p>Password: <input type="password" name="password" onChange={this.onChangeInput} /></p>
-                        <p>Confirm password: <input type="password" name="confirmPassword" onChange={this.onChangeInput} /></p>
-                        <p>City: <input type="text" name="city" onChange={this.onChangeInput} /></p>
-                        <p>Country: <input type="text" name="country" onChange={this.onChangeInput} /></p>
-                        <p>Image URL: <input type="text" name="image_url" onChange={this.onChangeInput} /></p>
+                        <p><input type="text" name="email" onChange={this.onChangeInput} placeholder="email"/></p>
+                        <p><input type="text" name="username" onChange={this.onChangeInput} placeholder="username"/></p>
+                        <p><input type="password" name="password" onChange={this.onChangeInput} placeholder="password"/></p>
+                        <p><input type="password" name="confirmPassword" onChange={this.onChangeInput} placeholder="confirm password"/></p>
+                        <p><input type="text" name="city" onChange={this.onChangeInput} placeholder="city"/></p>
+                        <p><input type="text" name="country" onChange={this.onChangeInput} placeholder="country"/></p>
+                        <p><input type="text" name="image_url" onChange={this.onChangeInput} placeholder="image url"/></p>
         
                         <button className="button button-alt intro-button">Continue</button>
                     </form>
+                </div>
             </div>
 
         )
