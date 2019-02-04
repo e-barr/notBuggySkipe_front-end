@@ -1,10 +1,13 @@
 body {
-  background-color: rgb(202, 246, 247);
+  background-color: rgb(251, 252, 202);
   padding: 5%;
+  color: rgb(202, 34, 34);
+  /* text-shadow: 1px; */
 }
 
 .inner-content {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  background-color: rgb(240, 199, 223);
   border-radius: 5px;
   padding: 10px;
   margin-top: 10px;
@@ -15,6 +18,7 @@ input {
   width: 50%;
   padding: 5px;
   margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 button {
@@ -23,7 +27,7 @@ button {
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
