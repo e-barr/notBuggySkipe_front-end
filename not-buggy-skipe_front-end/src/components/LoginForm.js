@@ -18,26 +18,31 @@
 
 // export default LoginForm
 
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-const LoginForm = () => {
-    return (
-        <div className="ui raised padded text container segment">
-        <h2>Login</h2>
-            <form className="ui form">
-            <div className="field">
-                <label>username</label>
-                <input type="text" name="username" placeholder="username"/>
+import { login } from '../actions'
+
+class LoginForm extends Component {
+    render() {
+        return (
+            <div className="ui raised padded text container segment">
+            <h2>Login</h2>
+                <form className="ui form">
+                <div className="field">
+                    <label>username</label>
+                    <input type="text" name="username" placeholder="username"/>
+                </div>
+                <div className="field">
+                    <label>password</label>
+                    <input type="password" name="password" placeholder="password" />
+                </div>
+                
+                <button className="ui button" type="submit">Submit</button>
+                </form>
             </div>
-            <div className="field">
-                <label>password</label>
-                <input type="password" name="password" placeholder="password" />
-            </div>
-            
-            <button className="ui button" type="submit">Submit</button>
-            </form>
-        </div>
-    )
+        )
+    }
 }
 
-export default LoginForm;
+export default connect(null, { login })(LoginForm);
