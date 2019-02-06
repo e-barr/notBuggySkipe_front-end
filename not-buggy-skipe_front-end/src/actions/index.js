@@ -1,6 +1,6 @@
 // import { LOGIN, LOGOUT, SIGN_UP } from './types'
 import { LOGIN } from './types'
-// import db from '../apis/db'
+import db from '../apis/db'
 
 // const axiosConfig = {
 //     headers: {
@@ -8,10 +8,14 @@ import { LOGIN } from './types'
 //     }
 // }
 
-export const login = (formValues) => async dispatch => {
+export const login = (event, formValues) => async dispatch => {
+    event.preventDefault()
+// export const login = formValues => {
+    console.log('login was activated')
+    // debugger;
     console.log(formValues)
     // console.log(getState)
-    // const resp = await db.get('/api/v1/login' )
+    const resp = await db.post('/api/v1/login' )
     dispatch({
         type: LOGIN,
         payload: formValues
