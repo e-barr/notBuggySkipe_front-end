@@ -78,8 +78,44 @@ import React from 'react'
 
 const SignUpForm = () => {
     return (
-        <div className="ui raised padded text container segment">SignUpForm</div>
+        <div className="ui raised padded text container segment">
+        <h1>Sign Up</h1>
+
+        <form className="ui form">
+            <div className="field">
+                <label>email</label>
+                <input type="text" name="email" placeholder="email"/>
+            </div>
+            <div className="field">
+                <label>password</label>
+                <input type="password" name="password" placeholder="password" />
+            </div>
+            <div className="field">
+                <label>confirm password</label>
+                <input type="password" name="confirmPassword" placeholder="confirm password" />
+            </div>
+            <div className="field">
+                <label>city</label>
+                <input type="text" name="city" placeholder="city" />
+            </div>
+            <div className="field">
+                <label>country</label>
+                <input type="text" name="country" placeholder="country" />
+            </div>
+            <div className="field">
+                <label>image url (required)</label>
+                <input type="text" name="imageUrl" placeholder="image url" />
+            </div>
+
+            <button className="ui button" type="submit">Submit</button>
+        </form>
+        </div>
     )
 }
+
+// confirm password
+// city
+// country
+// image_url
 
 export default SignUpForm;

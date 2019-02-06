@@ -349,6 +349,7 @@ import LoginForm from './LoginForm'
 import About from './About'
 import ContactUs from './ContactUs'
 import SignUpForm from './SignUpForm'
+import './App.css'
 
 class App extends Component {
   state = {
@@ -358,6 +359,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+      <div className="main">
         <div className="ui container">
             <Header />
             {this.state.loggedIn ? <Content className="ui content"/> : null }
@@ -368,6 +370,7 @@ class App extends Component {
               <Route path="/signup" component={SignUpForm} />
             </Switch>
         </div>
+      </div>
       </BrowserRouter>
     )
   }

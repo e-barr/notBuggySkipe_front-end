@@ -37,7 +37,7 @@ class Header extends Component {
                         <Link to="/contact" className="item">Contact</Link>
                         <div className="right menu">
                             <div className="item">
-                                <Link to="/signup" className="ui primary button">Sign Up</Link>
+                                <Link to="/signup" className="ui button">Sign Up</Link>
                             </div>
                         </div>
                 </div>
