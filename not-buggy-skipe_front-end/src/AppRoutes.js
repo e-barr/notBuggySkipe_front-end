@@ -1,11 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Layout from './containers/Layout'
-import App from './containers/App'
-import Content from './containers/Content'
-import LoginForm from './containers/LoginForm'
-import About from './containers/About'
-import ContactUs from './containers/ContactUs'
+import Layout from './components/Layout'
+import App from './components/App'
+import Content from './components/Content'
+import LoginForm from './components/LoginForm'
+import About from './components/About'
+import ContactUs from './components/ContactUs'
+import SignUpForm from './components/SignUpForm'
 
 const AppRoutes = () => {
     return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
                 <Route path="/login" component={LoginForm} exact />
                 <Route path="/about" component={About} exact />
                 <Route path="/contact" component={ContactUs} />
+                <Route path="/signup" component={SignUpForm} />
             </Switch>
         </Layout>
     )

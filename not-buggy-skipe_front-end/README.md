@@ -7,3 +7,5 @@ This is a video chat app for one-on-one calls created with **React**, **JavaScri
 Demo: <br>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=JCo-uO7zeHQ" target="_blank"><img src="http://img.youtube.com/vi/JCo-uO7zeHQ/0.jpg" 
 alt="imageSearch Demo" width="240" height="180" border="10" /></a>
+
+Icon made by Freepik from <a href="https://www.flaticon.com/home">www.flaticon.com</a> 

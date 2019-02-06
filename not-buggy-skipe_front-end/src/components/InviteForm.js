@@ -15,7 +15,7 @@ class InviteForm extends Component {
     render() {
         const { closeInviteForm, receiverName, sendInvite, senderId, receiverId } = this.props
         return(
-            <div className="invite-form-tile">
+            <div>
                 <button onClick={closeInviteForm}>X</button>
                 INVITE TO: {receiverName}
                 <form>
