@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import LoginForm from './LoginForm'
 import MainPage from './MainPage'
 
