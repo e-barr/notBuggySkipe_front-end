@@ -32,16 +32,24 @@ import { logout } from '../actions'
 class Header extends Component {
     render() {
         console.log(this.props)
+        let location
+        this.props.isSignedIn ? location = "/main" : location = "/"
         return (
             <div>
-                <Link to="/"><h1 style={{ color: 'black' }}>TwoChat</h1></Link>
+                <Link to={location}><h1 style={{ color: 'red', textShadow: '#CCC 1px 0 10px'}}>TwoChat</h1></Link>
                 <div className="ui borderless menu">    
-                        { this.props.isLoggedIn ? null: <Link to="/login" className="item">Login</Link>}
+                        { this.props.isSignedIn ? null : <Link to="/login" className="item">Login</Link>}
                         <Link to="/about" className="item">About</Link>
                         <Link to="/contact" className="item">Contact</Link>
                         <div className="right menu">
                             <div className="item">
-                                { this.props.isLoggedIn ? <button>Logout</button> : <Link to="/signup" className="ui button">Sign Up</Link> }
+                                { this.props.isSignedIn ? 
+                                <button 
+                                    onClick={this.props.logout}
+                                    className="ui button"
+                                >
+                                    Logout
+                                </button> : <Link to="/signup" className="ui button">Sign Up</Link> }
                             </div>
                         </div>
                 </div>
@@ -51,8 +59,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        isLoggedIn: state.auth.isLoggedIn
+        isSignedIn: state.auth.isSignedIn
     }
 }
 

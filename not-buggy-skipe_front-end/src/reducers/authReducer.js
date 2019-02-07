@@ -19,7 +19,8 @@ export default (state = defaultState, action) => {
                 isSignedIn: true
             };
         case LOGOUT:
-            return state;
+            console.log('logout reached in reducers')
+            return { ...state };
         case SIGN_UP:
             return state;
         case GET_USER_INFO:

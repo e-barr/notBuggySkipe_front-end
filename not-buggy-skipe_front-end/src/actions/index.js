@@ -41,7 +41,6 @@ export const logout = () => {
 
 export const getUserInfo = () => async dispatch => {
     const token = localStorage.token
-    console.log(`token is: ${token}`)
     let resp = {}
 
     try {
