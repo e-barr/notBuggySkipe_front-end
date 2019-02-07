@@ -343,7 +343,6 @@
 import React, { Component } from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import history from '../history'
 
 import Header from './Header'
 import Content from './Content'
@@ -352,8 +351,16 @@ import About from './About'
 import ContactUs from './ContactUs'
 import SignUpForm from './SignUpForm'
 import './App.css'
+import history from '../history'
+import { getUserInfo } from '../actions'
 
 class App extends Component {
+  componentDidMount() {
+    if (localStorage.token) {
+      this.props.getUserInfo()
+    }
+  }
+
   render() {
     return (
       <Router history={history}>
@@ -381,4 +388,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { getUserInfo })(App);

@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, SIGN_UP } from '../actions/types'
+import { LOGIN, LOGOUT, SIGN_UP, GET_USER_INFO } from '../actions/types'
 
 const defaultState = {
     isSignedIn: false,
@@ -8,9 +8,10 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
+    let { jwt, user } = action.payload || ""
+
     switch(action.type) {
         case LOGIN:
-            const { jwt, user } = action.payload
             return { 
                 ...state,
                 currentUser: user,
@@ -21,6 +22,13 @@ export default (state = defaultState, action) => {
             return state;
         case SIGN_UP:
             return state;
+        case GET_USER_INFO:
+            return { 
+                ...state,
+                currentUser: action.payload,
+                jwtToken: localStorage.token,
+                isSignedIn: true
+            };
         default:
             return state;
     }

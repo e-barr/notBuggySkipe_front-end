@@ -14,7 +14,7 @@ import React, { Component } from 'react'
 class Content extends Component {
     render() {
         return (
-            <div>
+            <div className="ui raised padded text container segment">
                 content
             </div>
         )
