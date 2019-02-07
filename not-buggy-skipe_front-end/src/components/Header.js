@@ -30,7 +30,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <h1>TwoChat</h1>
+                <Link to="/"><h1 style={{ color: 'black' }}>TwoChat</h1></Link>
                 <div className="ui borderless menu">    
                         <Link to="/login" className="item">Login</Link>
                         <Link to="/about" className="item">About</Link>

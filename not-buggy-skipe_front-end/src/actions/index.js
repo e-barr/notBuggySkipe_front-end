@@ -2,12 +2,7 @@
 import { LOGIN } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
-
-// const axiosConfig = {
-//     headers: {
-//         'Content-Type': 'application/json'
-//     }
-// }
+import history from '../history'
 
 export const login = ({ username, password }) => async dispatch => {
     let resp = {}
@@ -20,28 +15,23 @@ export const login = ({ username, password }) => async dispatch => {
         })
     } catch (error) {
         resp = { error: error.message }
-        swal("Invalid credentials", "Invalid username and/or password. Please try again.", "error", {
-            button: false
-        })
+        swal("Invalid credentials", "Invalid username and/or password. Please try again.", "error")
     }
 
-    console.log(resp)
     const data = resp.data
     
-    const payload = {}
+    const payload = resp.data
 
-    // if (!data.error) {
-    //     localStorage.token = data.jwt
-    //     payload.user = resp.data.user
-    // } else {
-    //     payload.loginError = data.error
-    // }
+    if (!data.error) {
+        localStorage.token = data.jwt
+    }
 
-    // console.log(payload)
     dispatch({
         type: LOGIN,
         payload
     })
+
+    history.push("/main")
 }
 
 // export const logout = () => {

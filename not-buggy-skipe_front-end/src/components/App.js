@@ -341,7 +341,9 @@
 
 
 import React, { Component } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Router, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import history from '../history'
 
 import Header from './Header'
 import Content from './Content'
@@ -352,19 +354,15 @@ import SignUpForm from './SignUpForm'
 import './App.css'
 
 class App extends Component {
-  state = {
-    loggedIn: false
-  }
-
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
       <div className="main">
         <div className="ui container">
             <Header />
-            {this.state.loggedIn ? <Content className="ui content"/> : null }
             <Switch>
               <Route path="/" exact component={About} />
+              <Route path="/main" exact component={Content} />
               <Route path="/login" component={LoginForm} exact />
               <Route path="/about" component={About} exact />
               <Route path="/contact" component={ContactUs} />
@@ -372,9 +370,15 @@ class App extends Component {
             </Switch>
         </div>
       </div>
-      </BrowserRouter>
+      </Router>
     )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isSignedIn: state.isSignedIn
+  }
+}
+
+export default connect(mapStateToProps)(App);
