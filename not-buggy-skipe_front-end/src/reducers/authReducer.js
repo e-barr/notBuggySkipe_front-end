@@ -2,7 +2,8 @@ import { LOGIN, LOGOUT, SIGN_UP } from '../actions/types'
 
 const defaultState = {
     isSignedIn: false,
-    user: null
+    user: null,
+    loginForm: {}
 }
 
 export default (state = defaultState, action) => {

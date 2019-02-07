@@ -35,12 +35,12 @@ class LoginForm extends Component {
         }
     }
 
-    renderInput = ({ input, label, meta,placeholder }) => {
+    renderField = ({ input, label, meta, type }) => {
         const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         return (
             <div className={className}>
                 <label>{label}</label>
-                <input {...input} placeholder={placeholder} onChange={this.handleInputChange} />
+                <input {...input} placeholder={label} type={type} />
                 <div>{this.renderError(meta)}</div>
             </div>
         )
@@ -51,31 +51,36 @@ class LoginForm extends Component {
         console.log(formValues)
     }
 
-    render() {
+    renderForm = () => {
         return (
-            <div className="ui raised padded text container segment">
-            <h2>Login</h2>
-                <form className="ui form error">
+            <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field 
                     name="username"
                     label="username"
-                    placeholder="username"
-                    component={this.renderInput}
+                    component={this.renderField}
+                    type="text"
                 />
                 <Field 
                     name="password"
                     label="password"
-                    placeholder="password"
-                    component={this.renderInput}
+                    component={this.renderField}
+                    type="password"
                 />
                 <button 
                     className="ui button"
                     type="submit"
-                    onSubmit={this.onSubmit}
                 >
                     Submit
                 </button>
                 </form>
+        )
+    }
+
+    render() {
+        return (
+            <div className="ui raised padded text container segment">
+            <h2>Login</h2>
+                {this.renderForm()}
             </div>
         )
     }
@@ -96,7 +101,7 @@ const validate = (formValues) => {
 }
 
 const formWrapped = reduxForm({
-    form: 'login',
+    form: 'loginForm',
     validate
 })(LoginForm);
 
