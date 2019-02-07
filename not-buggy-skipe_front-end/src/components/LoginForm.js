@@ -20,49 +20,58 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
 
 import { login } from '../actions'
 
 class LoginForm extends Component {
-    state = {
-        username: '',
-        password: ''
+    renderError({ error, touched }) {
+        if (error && touched) {
+            return (
+                <div className="ui error" >
+                    <div className="header">{error}</div>
+                </div>
+            )
+        }
     }
 
-    handleInputChange = (event) => {
-        const { name, value } = event.target
-        this.setState({
-            [name]: value
-        })
+    renderInput = ({ input, label, meta,placeholder }) => {
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <input {...input} placeholder={placeholder} onChange={this.handleInputChange} />
+                <div>{this.renderError(meta)}</div>
+            </div>
+        )
     }
+
+    onSubmit = (formValues) => {
+        console.log(`formValues is:`)
+        console.log(formValues)
+    }
+
     render() {
         return (
             <div className="ui raised padded text container segment">
             <h2>Login</h2>
-                <form className="ui form">
-                <div className="field">
-                    <label>username</label>
-                    <input 
-                        type="text"
-                        name="username"
-                        placeholder="username"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
-                <div className="field">
-                    <label>password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        onChange={this.handleInputChange}
-                    />
-                </div>
-                
+                <form className="ui form error">
+                <Field 
+                    name="username"
+                    label="username"
+                    placeholder="username"
+                    component={this.renderInput}
+                />
+                <Field 
+                    name="password"
+                    label="password"
+                    placeholder="password"
+                    component={this.renderInput}
+                />
                 <button 
                     className="ui button"
                     type="submit"
-                    onSubmit={(event) => this.login(event, { user: {...this.state}})}
+                    onSubmit={this.onSubmit}
                 >
                     Submit
                 </button>
@@ -72,4 +81,23 @@ class LoginForm extends Component {
     }
 }
 
-export default connect(null, { login })(LoginForm);
+const validate = (formValues) => {
+    const errors = {}
+
+    if (!formValues.username) {
+        errors.username = 'You must enter a username'
+    }
+
+    if (!formValues.password) {
+        errors.password = 'You must enter a password'
+    }
+
+    return errors
+}
+
+const formWrapped = reduxForm({
+    form: 'login',
+    validate
+})(LoginForm);
+
+export default connect(null, { login })(formWrapped);

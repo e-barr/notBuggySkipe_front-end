@@ -364,6 +364,7 @@ class App extends Component {
             <Header />
             {this.state.loggedIn ? <Content className="ui content"/> : null }
             <Switch>
+              <Route path="/" exact component={About} />
               <Route path="/login" component={LoginForm} exact />
               <Route path="/about" component={About} exact />
               <Route path="/contact" component={ContactUs} />

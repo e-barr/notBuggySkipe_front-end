@@ -9,7 +9,6 @@ import db from '../apis/db'
 // }
 
 export const login = (event, formValues) => async dispatch => {
-    event.preventDefault()
 // export const login = formValues => {
     console.log('login was activated')
     // debugger;

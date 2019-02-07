@@ -5,6 +5,8 @@ const About = () => {
         <div className="ui raised padded text container segment inverse">
             <div>
                 <p>This is a one-on-one video chat app, created by <a href="https://github.com/e-barr">e-barr</a>.</p>
+
+                <p>To get started, please login or sign up using the links above.</p>
             </div>
         </div>
     )
