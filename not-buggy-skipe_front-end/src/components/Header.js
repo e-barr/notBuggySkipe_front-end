@@ -31,7 +31,6 @@ import { logout } from '../actions'
 
 class Header extends Component {
     render() {
-        console.log(this.props)
         let location
         this.props.isSignedIn ? location = "/main" : location = "/"
         return (
@@ -59,7 +58,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         isSignedIn: state.auth.isSignedIn
     }

@@ -21,32 +21,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+import { renderField } from './Utils'
 
 
 import { login } from '../actions'
 
 class LoginForm extends Component {
-    renderError({ error, touched }) {
-        if (error && touched) {
-            return (
-                <div className="ui error" >
-                    <div className="header">{error}</div>
-                </div>
-            )
-        }
-    }
-
-    renderField = ({ input, label, meta, type }) => {
-        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
-        return (
-            <div className={className}>
-                <label>{label}</label>
-                <input {...input} placeholder={label} type={type} />
-                <div>{this.renderError(meta)}</div>
-            </div>
-        )
-    }
-
     onSubmit = (formValues) => {
         this.props.login(formValues)
     }
@@ -57,13 +37,13 @@ class LoginForm extends Component {
                 <Field 
                     name="username"
                     label="username"
-                    component={this.renderField}
+                    component={renderField}
                     type="text"
                 />
                 <Field 
                     name="password"
                     label="password"
-                    component={this.renderField}
+                    component={renderField}
                     type="password"
                 />
                 <button 

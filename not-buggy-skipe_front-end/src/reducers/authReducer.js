@@ -21,7 +21,12 @@ export default (state = defaultState, action) => {
         case LOGOUT:
             return { ...defaultState };
         case SIGN_UP:
-            return state;
+            return {
+                ...state,
+                currentUser: user,
+                jwtToken: jwt,
+                isSignedIn: true
+            };
         case GET_USER_INFO:
             return { 
                 ...state,

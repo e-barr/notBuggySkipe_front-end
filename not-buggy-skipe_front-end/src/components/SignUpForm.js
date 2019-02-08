@@ -74,48 +74,124 @@
 
 // export default SignUpForm
 
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Field, reduxForm } from 'redux-form'
+import { renderField } from './Utils'
 
-const SignUpForm = () => {
-    return (
-        <div className="ui raised padded text container segment">
-        <h1>Sign Up</h1>
+import { signUp } from '../actions'
 
-        <form className="ui form">
-            <div className="field">
-                <label>email</label>
-                <input type="text" name="email" placeholder="email"/>
-            </div>
-            <div className="field">
-                <label>password</label>
-                <input type="password" name="password" placeholder="password" />
-            </div>
-            <div className="field">
-                <label>confirm password</label>
-                <input type="password" name="confirmPassword" placeholder="confirm password" />
-            </div>
-            <div className="field">
-                <label>city</label>
-                <input type="text" name="city" placeholder="city" />
-            </div>
-            <div className="field">
-                <label>country</label>
-                <input type="text" name="country" placeholder="country" />
-            </div>
-            <div className="field">
-                <label>image url (required)</label>
-                <input type="text" name="imageUrl" placeholder="image url" />
-            </div>
+class SignUpForm extends Component {
+    onSubmit = (formValues) => {
+        this.props.signUp(formValues)
+    }
 
-            <button className="ui button" type="submit">Submit</button>
-        </form>
-        </div>
-    )
+    renderForm = () => {
+        return (
+            <form
+            className="ui form error"
+            onSubmit={this.props.handleSubmit(this.onSubmit)}>
+
+                <Field
+                    name="email"
+                    label="email"
+                    component={renderField}
+                    type="text"
+                />
+                <Field
+                    name="username"
+                    label="username"
+                    component={renderField}
+                    type="text"
+                />
+                <Field
+                    name="password"
+                    label="password"
+                    component={renderField}
+                    type="password"
+                />
+                <Field
+                    name="confirmPassword"
+                    label="confirm password"
+                    component={renderField}
+                    type="password"
+                />
+                <Field
+                    name="city"
+                    label="city"
+                    component={renderField}
+                    type="text"
+                />
+                <Field
+                    name="country"
+                    label="country"
+                    component={renderField}
+                    type="text"
+                />
+                <Field
+                    name="image_url"
+                    label="image url"
+                    component={renderField}
+                    type="text"
+                />
+
+                <button
+                    className="ui button"
+                    type="submit"
+                >
+                    Submit
+                </button>
+            </form>
+        )
+    }
+
+    render() {
+        return (
+            <div className="ui raised padded text container segment">
+                <h1>Sign Up</h1>
+                {this.renderForm()}
+            </div>
+        )
+    }
 }
 
-// confirm password
-// city
-// country
-// image_url
+const validate = ({ email, username, password, confirmPassword, city, country, image_url }) => {
+    const errors = {}
 
-export default SignUpForm;
+    if (!email) {
+        errors.email = 'You must enter an email'
+    }
+
+    if (!username) {
+        errors.username = 'You must enter a username'
+    }
+
+    if (!password) {
+        errors.password = 'You must enter a password'
+    }
+
+    if (password !== confirmPassword) {
+        errors.confirmPassword = 'Your passwords do not match'
+    }
+
+    if (!city) {
+        errors.city = 'You must enter a city'
+    }
+
+    if (!country) {
+        errors.country = 'You must enter a country'
+    }
+
+    if (!image_url) {
+        errors[image_url] = 'You must enter an image url.'
+    }
+
+    return errors
+}
+
+const formWrapped = reduxForm({
+    form: 'signUpForm',
+    validate
+})(SignUpForm);
+
+export default connect(null, { signUp })(formWrapped);
