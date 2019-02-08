@@ -4,7 +4,7 @@ const defaultState = {
     isSignedIn: false,
     currentUser: null,
     loginError: null,
-    jwtToken: null
+    jwtToken: null,
 }
 
 export default (state = defaultState, action) => {

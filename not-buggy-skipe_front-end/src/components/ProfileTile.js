@@ -22,7 +22,6 @@ import React, { Component } from 'react'
 
 class ProfileTile extends Component {
     render() {
-        console.log(this.props)
         if (this.props.username) {
             const { username, city, country, image_url } = this.props
             return (
@@ -34,7 +33,10 @@ class ProfileTile extends Component {
                         />
                     </div>
                     <div className="content">
-                            <button className="ui right floated icon button" >
+                            <button 
+                                className="ui right floated icon button"
+                                onClick={this.props.isEditingProfile}
+                            >
                                 <i className="edit icon"></i>
                             </button>
                         <div className="header">

@@ -1,4 +1,12 @@
-import { LOGIN, GET_USER_INFO, LOGOUT, SIGN_UP } from './types'
+import { 
+    LOGIN,
+    SIGN_UP,
+    LOGOUT,
+    GET_USER_INFO,
+    IS_EDITING_PROFILE,
+    SUBMIT_PROFILE_CHANGES,
+    GET_CONTENT_INFO
+} from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
 import history from '../history'
@@ -94,3 +102,45 @@ export const signUp = ({ email, username, password, confirmPassword, city, count
     })
 }
 
+export const submitProfileChanges = (currentUser, updatedValues) => async dispatch => {
+    let { email, username, city, country, image_url } = updatedValues
+    let updatedUser = { ...currentUser, email, username, city, country, image_url }
+    let resp
+    let payload = {}
+    const token = localStorage.token
+    console.log('currentUser:')
+    console.log(currentUser)
+    console.log('updated user:')
+    console.log(updatedUser)
+
+    try {
+        resp = await db.patch('/api/v1/profile', {
+            user: { ...updatedUser },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${token}`
+            }
+        })
+        console.log(resp)
+        payload = resp.data
+        localStorage.token = payload.jwt
+        swal("Success!", "Your account has been successfully updated.", "success")
+        history.push("/main")
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Profile update failed.", `${resp.error}`, "error")
+    }
+
+    dispatch({
+        type: SUBMIT_PROFILE_CHANGES
+        // type: SUBMIT_PROFILE_CHANGES,
+        // payload
+    })
+    
+}
+
+export const isEditingProfile = () => {
+    return {
+        type: IS_EDITING_PROFILE
+    }
+}

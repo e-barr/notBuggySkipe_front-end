@@ -77,8 +77,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { renderField } from './Utils'
 
+import { renderField } from './Utils'
 import { signUp } from '../actions'
 
 class SignUpForm extends Component {

@@ -11,25 +11,37 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import ProfileTile from './ProfileTile'
+import EditProfile from './EditProfile'
+import { isEditingProfile } from '../actions'
 
 class Content extends Component {
     render() {
         if (this.props.user) {
             const { username, city, country, image_url } = this.props.user
+            const { isEditing } = this.props.content
             console.log(this.props.user)
-            return (
-                <div className="ui raised padded text container segment">
-                    <div className="ui two stackable cards">
-                        <ProfileTile
-                            username={username}
-                            city={city}
-                            country={country}
-                            image_url={image_url}
-                        />
+
+            if (isEditing) {
+                return (
+                    <EditProfile />
+                )
+            } else {
+                return (
+                    <div className="ui raised padded text container segment">
+                        <div className="ui two stackable cards">
+                            <ProfileTile
+                                username={username}
+                                city={city}
+                                country={country}
+                                image_url={image_url}
+                                isEditingProfile={this.props.isEditingProfile}
+                            />
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            }
         } else {
             return null
         }
@@ -37,10 +49,10 @@ class Content extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state)
     return {
-        user: state.auth.currentUser
+        user: state.auth.currentUser,
+        content: state.content
     }
 }
 
-export default connect(mapStateToProps)(Content);
+export default connect(mapStateToProps, { isEditingProfile })(Content);
