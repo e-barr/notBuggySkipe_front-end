@@ -33,7 +33,8 @@ export const login = ({ username, password }) => async dispatch => {
 }
 
 export const logout = () => {
-    console.log('logout reached!')
+    history.push("/")
+
     return {
         type: LOGOUT
     }
