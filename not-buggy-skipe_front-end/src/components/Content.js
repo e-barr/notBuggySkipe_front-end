@@ -20,7 +20,7 @@ class Content extends Component {
             console.log(this.props.user)
             return (
                 <div className="ui raised padded text container segment">
-                    <div className="ui cards">
+                    <div className="ui two stackable cards">
                         <ProfileTile
                             username={username}
                             city={city}
