@@ -38,6 +38,14 @@ class ViewInvites extends Component {
         )
     }
 
+    renderSentInvites = (invites) => {
+        return (
+            <div className="ui two column grid">
+                {invites.map((invite) => this.renderInvite(invite.receiver, invite.room))}
+            </div>
+        )
+    }
+
     render() {
         const { received_invites, sent_invites } = this.props.user
         console.log(this.props.user)
@@ -51,6 +59,10 @@ class ViewInvites extends Component {
                         {this.renderReceivedInvites(received_invites)}
                     </div>
                     <h4>SENT</h4>
+
+                    <div className="ui stackable divided grid">
+                        {this.renderSentInvites(sent_invites)}
+                    </div>
                     <button
                         className="ui right floated button"
                         onClick={this.props.toggleShowInvites}
