@@ -1,6 +1,7 @@
 import { 
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
+    TOGGLE_SHOW_INVITES
     // GET_CONTENT_INFO
  } from '../actions/types'
 
@@ -8,7 +9,8 @@ const defaultState = {
     isEditing: false,
     isViewingAllUsers: false,
     enteredRoom: false,
-    isSendingInvite: false
+    isSendingInvite: false,
+    isViewingInvites: false
 }
 
 export default (state = defaultState, action) => {
@@ -22,6 +24,9 @@ export default (state = defaultState, action) => {
         //     console.log('get content info in contentReducer reached!')
         //     console.log(action.payload)
         //     return state;
+        case TOGGLE_SHOW_INVITES:
+            const isViewingInvites = !state.isViewingInvites
+            return { ...defaultState, isViewingInvites }
         default:
             return state;
     }

@@ -15,7 +15,7 @@ class InvitesTile extends Component {
                         src="/images/envelope.png"
                         alt="envelope"
                         style={invitesTileStyle}
-                        onClick={() => console.log('envelope clicked!')}
+                        onClick={this.props.toggleShowInvites}
                     />
                 </div>
             </div>

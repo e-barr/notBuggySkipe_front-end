@@ -5,6 +5,7 @@ import {
     GET_USER_INFO,
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
+    TOGGLE_SHOW_INVITES,
     // GET_CONTENT_INFO
 } from './types'
 import db from '../apis/db'
@@ -138,5 +139,11 @@ export const submitProfileChanges = (currentUser, updatedValues) => async dispat
 export const isEditingProfile = () => {
     return {
         type: IS_EDITING_PROFILE
+    }
+}
+
+export const toggleShowInvites = () => {
+    return {
+        type: TOGGLE_SHOW_INVITES
     }
 }
