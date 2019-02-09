@@ -66,14 +66,18 @@ class ViewInvites extends Component {
                             <div className="ui stackable divided grid">
                                 {this.renderSentInvites(sent_invites)}
                             </div>
+                            <br></br>
+                            <br></br>
                     </div>
+            <button
+                className="ui right floated button"
+                onClick={this.props.toggleShowInvites}
+                >
+                Cancel
+            </button>
+            <br></br>
+            <br></br>
             </div>
-                <button
-                    className="ui right floated button" style={{ marginTop: '-40px'}}
-                    onClick={this.props.toggleShowInvites}
-                    >
-                    Cancel
-                </button>
             </div>
         )
     }
