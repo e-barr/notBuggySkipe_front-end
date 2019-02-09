@@ -45,10 +45,10 @@ class Header extends Component {
                                 { this.props.isSignedIn ? 
                                 <button 
                                     onClick={this.props.logout}
-                                    className="ui button"
+                                    className="ui red button"
                                 >
                                     Logout
-                                </button> : <Link to="/signup" className="ui button">Sign Up</Link> }
+                                </button> : <Link to="/signup" className="ui green button">Sign Up</Link> }
                             </div>
                         </div>
                 </div>

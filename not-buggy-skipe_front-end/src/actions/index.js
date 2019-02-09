@@ -113,6 +113,8 @@ export const submitProfileChanges = (currentUser, updatedValues) => async dispat
     console.log('updated user:')
     console.log(updatedUser)
 
+    debugger;
+
     try {
         resp = await db.patch('/api/v1/profile', {
             user: { ...updatedUser },
@@ -123,7 +125,7 @@ export const submitProfileChanges = (currentUser, updatedValues) => async dispat
         })
         console.log(resp)
         payload = resp.data
-        localStorage.token = payload.jwt
+        // localStorage.token = payload.jwt
         swal("Success!", "Your account has been successfully updated.", "success")
         history.push("/main")
     } catch (error) {

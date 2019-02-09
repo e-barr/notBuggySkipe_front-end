@@ -47,7 +47,7 @@ class LoginForm extends Component {
                     type="password"
                 />
                 <button 
-                    className="ui button"
+                    className="ui green button"
                     type="submit"
                 >
                     Submit
