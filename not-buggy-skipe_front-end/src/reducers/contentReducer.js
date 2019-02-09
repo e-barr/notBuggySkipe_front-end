@@ -17,10 +17,7 @@ export default (state = defaultState, action) => {
             const isEditing = !state.isEditing
             return { ...state, isEditing };
         case SUBMIT_PROFILE_CHANGES:
-            console.log('submit profile changes in contentReducer reached!')
-            console.log(state)
-            console.log(action)
-            return state;
+            return { ...defaultState };
         case GET_CONTENT_INFO:
             console.log('get content info in contentReducer reached!')
             console.log(action.payload)

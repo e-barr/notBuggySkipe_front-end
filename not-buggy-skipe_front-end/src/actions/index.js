@@ -103,29 +103,24 @@ export const signUp = ({ email, username, password, confirmPassword, city, count
 }
 
 export const submitProfileChanges = (currentUser, updatedValues) => async dispatch => {
-    let { email, username, city, country, image_url } = updatedValues
-    let updatedUser = { ...currentUser, email, username, city, country, image_url }
-    let resp
-    let payload = {}
+    const { email, username, city, country, image_url } = updatedValues
     const token = localStorage.token
-    console.log('currentUser:')
-    console.log(currentUser)
-    console.log('updated user:')
-    console.log(updatedUser)
-
-    debugger;
+    let updatedUser = { ...currentUser, email, username, city, country, image_url }
+    let resp = {}
+    let payload;
+    const headersConfig = { headers: {
+        'Authorization' : `Bearer ${token}`
+    }}
 
     try {
         resp = await db.patch('/api/v1/profile', {
             user: { ...updatedUser },
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${token}`
-            }
-        })
+                'Content-Type': 'application/json'
+            },
+        }, headersConfig)
         console.log(resp)
         payload = resp.data
-        // localStorage.token = payload.jwt
         swal("Success!", "Your account has been successfully updated.", "success")
         history.push("/main")
     } catch (error) {
@@ -134,9 +129,8 @@ export const submitProfileChanges = (currentUser, updatedValues) => async dispat
     }
 
     dispatch({
-        type: SUBMIT_PROFILE_CHANGES
-        // type: SUBMIT_PROFILE_CHANGES,
-        // payload
+        type: SUBMIT_PROFILE_CHANGES,
+        payload
     })
     
 }
