@@ -23,7 +23,6 @@ class Content extends Component {
         if (this.props.user) {
             const { username, city, country, image_url } = this.props.user
             const { isEditing, isViewingInvites } = this.props.content
-            console.log(this.props.user)
 
             if (isEditing) {
                 return (
@@ -31,7 +30,9 @@ class Content extends Component {
                 )
             } else if (isViewingInvites) {
                 return (
-                    <ViewInvites />
+                    <ViewInvites
+                        user={this.props.user}
+                    />
                 )
             } else {
                 return (
