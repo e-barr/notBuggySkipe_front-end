@@ -1,7 +1,7 @@
 import { 
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
-    GET_CONTENT_INFO
+    // GET_CONTENT_INFO
  } from '../actions/types'
 
 const defaultState = {
@@ -18,10 +18,10 @@ export default (state = defaultState, action) => {
             return { ...state, isEditing };
         case SUBMIT_PROFILE_CHANGES:
             return { ...defaultState };
-        case GET_CONTENT_INFO:
-            console.log('get content info in contentReducer reached!')
-            console.log(action.payload)
-            return state;
+        // case GET_CONTENT_INFO:
+        //     console.log('get content info in contentReducer reached!')
+        //     console.log(action.payload)
+        //     return state;
         default:
             return state;
     }

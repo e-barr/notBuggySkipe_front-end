@@ -37,7 +37,7 @@ class Header extends Component {
             <div>
                 <Link to={location}><h1 style={{ color: 'red', textShadow: '#CCC 1px 0 10px'}}>TwoChat</h1></Link>
                 <div className="ui borderless menu">    
-                        { this.props.isSignedIn ? null : <Link to="/login" className="item">Login</Link>}
+                        { this.props.isSignedIn ? <Link to="/main" className="item">Home</Link> : <Link to="/login" className="item">Login</Link>}
                         <Link to="/about" className="item">About</Link>
                         <Link to="/contact" className="item">Contact</Link>
                         <div className="right menu">

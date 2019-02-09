@@ -5,7 +5,7 @@ import {
     GET_USER_INFO,
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
-    GET_CONTENT_INFO
+    // GET_CONTENT_INFO
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
