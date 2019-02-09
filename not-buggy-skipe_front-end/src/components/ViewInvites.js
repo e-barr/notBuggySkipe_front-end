@@ -8,12 +8,16 @@ class ViewInvites extends Component {
         const { image_url, username } = otherUser
 
         return (
-            <div className="column" key={otherUser.id}>
+            <div className="column" key={room.id}>
                 <div className="ui segment">
                     <div className="content" >
                         <div>
                             <h2 className="ui top attached header">
-                                <img className="ui circular image" src={image_url} />
+                                <img 
+                                    className="ui circular image"
+                                    src={image_url}
+                                    alt={username}
+                                />
                                 {username}
                             </h2>
                         </div>
@@ -50,26 +54,28 @@ class ViewInvites extends Component {
         const { received_invites, sent_invites } = this.props.user
         console.log(this.props.user)
         return (
-            <div className="ui raised padded text container segment">
+            <div className="ui raised padded container segment">
+            <div>
                 <h1>Invites</h1>
                     <div className="container">
-                    <h4>RECEIVED</h4>
+                        <h4>RECEIVED</h4>
                     
-                    <div className="ui stackable divided grid">
-                        {this.renderReceivedInvites(received_invites)}
-                    </div>
-                    <h4>SENT</h4>
+                            <div className="ui stackable divided grid">
+                                {this.renderReceivedInvites(received_invites)}
+                            </div>
+                        <h4>SENT</h4>
 
-                    <div className="ui stackable divided grid">
-                        {this.renderSentInvites(sent_invites)}
+                            <div className="ui stackable divided grid">
+                                {this.renderSentInvites(sent_invites)}
+                            </div>
                     </div>
-                    <button
-                        className="ui right floated button"
-                        onClick={this.props.toggleShowInvites}
-                        >
-                        Cancel
-                    </button>
-                </div>
+            </div>
+                <button
+                    className="ui right floated button"
+                    onClick={this.props.toggleShowInvites}
+                    >
+                    Cancel
+                </button>
             </div>
         )
     }
