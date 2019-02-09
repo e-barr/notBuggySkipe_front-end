@@ -25,7 +25,7 @@ class ProfileTile extends Component {
         if (this.props.username) {
             const { username, city, country, image_url } = this.props
             return (
-                <div className="ui raised card">
+                <div className="card">
                     <div className="image">
                         <img 
                         src={image_url}

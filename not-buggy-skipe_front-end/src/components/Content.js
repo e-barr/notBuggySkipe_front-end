@@ -14,6 +14,7 @@ import { connect } from 'react-redux'
 
 import ProfileTile from './ProfileTile'
 import EditProfile from './EditProfile'
+import InvitesTile from './InvitesTile'
 import { isEditingProfile } from '../actions'
 
 class Content extends Component {
@@ -38,6 +39,7 @@ class Content extends Component {
                                 image_url={image_url}
                                 isEditingProfile={this.props.isEditingProfile}
                             />
+                            <InvitesTile />
                         </div>
                     </div>
                 )

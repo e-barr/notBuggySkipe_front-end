@@ -120,7 +120,6 @@ class EditProfile extends Component {
 
     render() {
         const { currentUser } = this.props
-        console.log(this.props)
             return(
                 <div className="ui raised padded text container segment">
                     <h1>Profile</h1>
@@ -162,7 +161,6 @@ const formWrapped = reduxForm({
 })(EditProfile);
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         currentUser: state.auth.currentUser,
         initialValues: state.auth.currentUser
