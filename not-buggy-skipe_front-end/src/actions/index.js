@@ -6,7 +6,7 @@ import {
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
-    DELETE_INVITE
+    // DELETE_INVITE
     // GET_CONTENT_INFO
 } from './types'
 import db from '../apis/db'
@@ -152,6 +152,7 @@ export const deleteInvite = (id, user_id) => async dispatch => {
     
     const token = localStorage.token
     let resp = {}
+    let payload
 
     try {
         resp = await db.delete('/api/v1/invites', {
@@ -164,13 +165,14 @@ export const deleteInvite = (id, user_id) => async dispatch => {
             },
         })
         console.log(resp)
-        history.push("/main")
+        payload = resp.data.user
     } catch (error) {
         resp = { error: error.message }
         swal("Invitation failed to delete.", `${resp.error}`, "error")
     }
 
     dispatch({
-        type: DELETE_INVITE
+        type: GET_USER_INFO,
+        payload
     })
 }

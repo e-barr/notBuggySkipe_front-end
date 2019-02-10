@@ -1,4 +1,9 @@
-import { LOGIN, LOGOUT, SIGN_UP, GET_USER_INFO } from '../actions/types'
+import { 
+    LOGIN,
+    LOGOUT,
+    SIGN_UP,
+    GET_USER_INFO
+} from '../actions/types'
 
 const defaultState = {
     isSignedIn: false,
@@ -28,6 +33,11 @@ export default (state = defaultState, action) => {
                 isSignedIn: true
             };
         case GET_USER_INFO:
+            console.log('entered auth reducer with GET_USER_INFO')
+            console.log('state is:')
+            console.log(state)
+            console.log('action is:')
+            console.log(action)
             return { 
                 ...state,
                 currentUser: action.payload,

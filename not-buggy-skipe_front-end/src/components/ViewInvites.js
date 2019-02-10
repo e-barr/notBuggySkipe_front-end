@@ -5,7 +5,6 @@ import { toggleShowInvites, deleteInvite } from '../actions'
 
 class ViewInvites extends Component {
     renderInvite = (inviteId, otherUser, room) => {
-        console.log(`inviteId is: ${inviteId}`)
         const { image_url, username } = otherUser
 
         return (
@@ -56,7 +55,7 @@ class ViewInvites extends Component {
     }
 
     render() {
-        const { received_invites, sent_invites } = this.props.user
+        const { received_invites, sent_invites } = this.props.currentUser
         return (
             <div className="ui raised padded container segment">
             <div>
