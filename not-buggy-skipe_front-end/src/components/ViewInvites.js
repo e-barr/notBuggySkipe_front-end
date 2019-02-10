@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { toggleShowInvites } from '../actions'
+import { toggleShowInvites, deleteInvite } from '../actions'
 
 class ViewInvites extends Component {
-    renderInvite = (otherUser, room) => {
+    renderInvite = (inviteId, otherUser, room) => {
+        console.log(`inviteId is: ${inviteId}`)
         const { image_url, username } = otherUser
 
         return (
@@ -26,7 +27,11 @@ class ViewInvites extends Component {
                         </div>
                             <div className="ui two bottom attached buttons">
                                 <button className="ui float right green button">start</button>
-                                <button className="ui red button">delete</button>
+                                <button
+                                    className="ui red button"
+                                    invite_id={inviteId}
+                                    onClick={() => this.props.deleteInvite(inviteId, this.props.currentUser.id)}
+                                >cancel</button>
                             </div>
                     </div>
                 </div>
@@ -37,7 +42,7 @@ class ViewInvites extends Component {
     renderReceivedInvites = (invites) => {
         return (
             <div className="ui four column grid">
-                {invites.map((invite) => this.renderInvite(invite.sender, invite.room))}
+                {invites.map((invite) => this.renderInvite(invite.id, invite.sender, invite.room))}
             </div>
         )
     }
@@ -45,7 +50,7 @@ class ViewInvites extends Component {
     renderSentInvites = (invites) => {
         return (
             <div className="ui four column grid">
-                {invites.map((invite) => this.renderInvite(invite.receiver, invite.room))}
+                {invites.map((invite) => this.renderInvite(invite.id, invite.receiver, invite.room))}
             </div>
         )
     }
@@ -73,7 +78,7 @@ class ViewInvites extends Component {
                 className="ui right floated button"
                 onClick={this.props.toggleShowInvites}
                 >
-                Cancel
+                Close
             </button>
             <br></br>
             <br></br>
@@ -83,4 +88,10 @@ class ViewInvites extends Component {
     }
 }
 
-export default connect(null, { toggleShowInvites })(ViewInvites);
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.auth.currentUser
+    }
+}
+
+export default connect(mapStateToProps, { toggleShowInvites, deleteInvite })(ViewInvites);

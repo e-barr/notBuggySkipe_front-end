@@ -6,6 +6,7 @@ import {
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
+    DELETE_INVITE
     // GET_CONTENT_INFO
 } from './types'
 import db from '../apis/db'
@@ -120,7 +121,6 @@ export const submitProfileChanges = (currentUser, updatedValues) => async dispat
                 'Content-Type': 'application/json'
             },
         }, headersConfig)
-        console.log(resp)
         payload = resp.data
         swal("Success!", "Your account has been successfully updated.", "success")
         history.push("/main")
@@ -146,4 +146,31 @@ export const toggleShowInvites = () => {
     return {
         type: TOGGLE_SHOW_INVITES
     }
+}
+
+export const deleteInvite = (id, user_id) => async dispatch => {
+    
+    const token = localStorage.token
+    let resp = {}
+
+    try {
+        resp = await db.delete('/api/v1/invites', {
+            data: {
+                invite: { id, user_id }
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${token}`
+            },
+        })
+        console.log(resp)
+        history.push("/main")
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Invitation failed to delete.", `${resp.error}`, "error")
+    }
+
+    dispatch({
+        type: DELETE_INVITE
+    })
 }
