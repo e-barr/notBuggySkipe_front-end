@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { toggleShowInvites, deleteInvite } from '../actions'
+import { toggleShowInvites, deleteInvite, startMeeting } from '../actions'
 
 class ViewInvites extends Component {
     renderInvite = (inviteId, otherUser, room) => {
@@ -25,7 +25,10 @@ class ViewInvites extends Component {
                             <p style={{ textAlign: 'center', textOverflow: 'clip' }}>{room.name}</p>
                         </div>
                             <div className="ui two bottom attached buttons">
-                                <button className="ui float right green button">start</button>
+                                <button 
+                                    className="ui float right green button"
+                                    onClick={this.props.startMeeting}
+                                    >start</button>
                                 <button
                                     className="ui red button"
                                     invite_id={inviteId}
@@ -93,4 +96,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { toggleShowInvites, deleteInvite })(ViewInvites);
+export default connect(mapStateToProps, { toggleShowInvites, deleteInvite, startMeeting })(ViewInvites);

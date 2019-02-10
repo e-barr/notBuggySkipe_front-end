@@ -1,13 +1,15 @@
 import { 
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
-    TOGGLE_SHOW_INVITES
+    TOGGLE_SHOW_INVITES,
+    START_MEETING
     // GET_CONTENT_INFO
  } from '../actions/types'
 
 const defaultState = {
     isEditing: false,
     isViewingAllUsers: false,
+    isStartingMeeting: false,
     enteredRoom: false,
     isSendingInvite: false,
     isViewingInvites: false
@@ -27,6 +29,8 @@ export default (state = defaultState, action) => {
         case TOGGLE_SHOW_INVITES:
             const isViewingInvites = !state.isViewingInvites
             return { ...defaultState, isViewingInvites }
+        case START_MEETING:
+            return { ...defaultState, isStartingMeeting: true }
         default:
             return state;
     }

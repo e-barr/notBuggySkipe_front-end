@@ -16,13 +16,14 @@ import ProfileTile from './ProfileTile'
 import EditProfile from './EditProfile'
 import InvitesTile from './InvitesTile'
 import ViewInvites from './ViewInvites'
+import MeetingRoomTile from './MeetingRoomTile'
 import { isEditingProfile, toggleShowInvites } from '../actions'
 
 class Content extends Component {
     render() {
         if (this.props.user) {
             const { username, city, country, image_url } = this.props.user
-            const { isEditing, isViewingInvites } = this.props.content
+            const { isEditing, isViewingInvites, isStartingMeeting } = this.props.content
 
             if (isEditing) {
                 return (
@@ -33,6 +34,10 @@ class Content extends Component {
                     <ViewInvites
                         user={this.props.user}
                     />
+                )
+            } else if (isStartingMeeting) {
+                return (
+                    <MeetingRoomTile />
                 )
             } else {
                 return (

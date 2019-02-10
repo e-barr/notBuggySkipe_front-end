@@ -6,6 +6,7 @@ import {
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
+    START_MEETING
     // DELETE_INVITE
     // GET_CONTENT_INFO
 } from './types'
@@ -164,7 +165,6 @@ export const deleteInvite = (id, user_id) => async dispatch => {
                 'Authorization' : `Bearer ${token}`
             },
         })
-        console.log(resp)
         payload = resp.data.user
     } catch (error) {
         resp = { error: error.message }
@@ -175,4 +175,10 @@ export const deleteInvite = (id, user_id) => async dispatch => {
         type: GET_USER_INFO,
         payload
     })
+}
+
+export const startMeeting = () => {
+    return {
+        type: START_MEETING
+    }
 }
