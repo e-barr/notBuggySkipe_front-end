@@ -9,9 +9,10 @@ class MeetingRoomTile extends Component {
         const room = this.props.currentUser.meeting_room
         console.log(this.props)
 
-        if (this.props.currentUser) {
+        if (this.props.currentUser && room) {
         return (
-            <div className="ui raised padded container segment">
+            <div className="ui raised padded container segment" style={{ paddingBottom: '9%' }}>
+
                 <h2>{room.name}</h2>
                 <div className="iframe-container">
                     <iframe
@@ -20,18 +21,17 @@ class MeetingRoomTile extends Component {
                     allow="microphone; camera"
                     scrolling="no"
                     ></iframe>
-                </div>
 
-                <br></br>
-                <br></br>
-                <br></br>
-                <button
-                    className="ui red right floated button"
+                    </div>
+                    <button
+                    className="ui right floated red button"
+                    style={{ marginTop: '2%' }}
                     onClick={this.props.endMeeting}
                     >
                     end
-                </button>
-            </div>
+                    </button>
+
+                    </div>
         )} else {
             return null
         }
