@@ -177,7 +177,6 @@ export const deleteInvite = (id, user_id) => async dispatch => {
 }
 
 export const startMeeting = (currentUser, meeting_id) => async dispatch => {
-    console.log('startMeeting in actions reached')
     const updatedUser = { ...currentUser, meeting_id }
     let resp = {}
     let payload;
