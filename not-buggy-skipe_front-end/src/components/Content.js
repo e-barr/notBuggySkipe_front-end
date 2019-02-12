@@ -25,7 +25,11 @@ class Content extends Component {
             const { username, city, country, image_url } = this.props.user
             const { isEditing, isViewingInvites, isStartingMeeting } = this.props.content
 
-            if (isEditing) {
+            if (isStartingMeeting) {
+                return (
+                    <MeetingRoomTile />
+                )
+            } else if (isEditing) {
                 return (
                     <EditProfile />
                 )
@@ -34,10 +38,6 @@ class Content extends Component {
                     <ViewInvites
                         user={this.props.user}
                     />
-                )
-            } else if (isStartingMeeting) {
-                return (
-                    <MeetingRoomTile />
                 )
             } else {
                 return (

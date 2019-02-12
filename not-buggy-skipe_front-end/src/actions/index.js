@@ -6,9 +6,8 @@ import {
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
-    START_MEETING
-    // DELETE_INVITE
-    // GET_CONTENT_INFO
+    START_MEETING,
+    END_MEETING
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -177,8 +176,48 @@ export const deleteInvite = (id, user_id) => async dispatch => {
     })
 }
 
-export const startMeeting = () => {
+export const startMeeting = (currentUser, meeting_id) => async dispatch => {
+    console.log('startMeeting in actions reached')
+    const updatedUser = { ...currentUser, meeting_id }
+    let resp = {}
+    let payload;
+    let token = localStorage.token
+
+    const headersConfig = { headers: {
+        'Authorization' : `Bearer ${token}`
+    }}
+
+    try {
+        resp = await db.patch('/api/v1/profile', {
+            user: updatedUser,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }, headersConfig)
+        payload = resp.data.user
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Meeting entrance failed.", `${resp.error}`, "error")
+    }
+
+
+    let returnedFunc = (dispatch) => {
+        dispatch({
+            type: GET_USER_INFO,
+            payload
+        })
+
+        dispatch({
+            type: START_MEETING
+        })
+
+    }
+
+    return dispatch(returnedFunc)
+}
+
+export const endMeeting = () => {
     return {
-        type: START_MEETING
+        type: END_MEETING
     }
 }

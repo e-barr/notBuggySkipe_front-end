@@ -2,8 +2,8 @@ import {
     IS_EDITING_PROFILE,
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
-    START_MEETING
-    // GET_CONTENT_INFO
+    START_MEETING,
+    END_MEETING
  } from '../actions/types'
 
 const defaultState = {
@@ -16,21 +16,23 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
+    console.log('contentReducer reached line 19')
     switch(action.type) {
         case IS_EDITING_PROFILE:
             const isEditing = !state.isEditing
             return { ...state, isEditing };
         case SUBMIT_PROFILE_CHANGES:
             return { ...defaultState };
-        // case GET_CONTENT_INFO:
-        //     console.log('get content info in contentReducer reached!')
-        //     console.log(action.payload)
-        //     return state;
         case TOGGLE_SHOW_INVITES:
             const isViewingInvites = !state.isViewingInvites
             return { ...defaultState, isViewingInvites }
         case START_MEETING:
+            console.log('START_MEETING in contentReducer reached')
             return { ...defaultState, isStartingMeeting: true }
+        case END_MEETING:
+            return {
+                ...defaultState, isStartingMeeting: false
+            }
         default:
             return state;
     }

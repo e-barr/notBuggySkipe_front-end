@@ -27,7 +27,7 @@ class ViewInvites extends Component {
                             <div className="ui two bottom attached buttons">
                                 <button 
                                     className="ui float right green button"
-                                    onClick={this.props.startMeeting}
+                                    onClick={() => this.props.startMeeting(this.props.currentUser, room.id)}
                                     >start</button>
                                 <button
                                     className="ui red button"
@@ -96,4 +96,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { toggleShowInvites, deleteInvite, startMeeting })(ViewInvites);
+export default connect(mapStateToProps, { startMeeting, toggleShowInvites, deleteInvite })(ViewInvites);

@@ -33,6 +33,7 @@ export default (state = defaultState, action) => {
                 isSignedIn: true
             };
         case GET_USER_INFO:
+            console.log('GET_USER_INFO authReducer reached')
             return { 
                 ...state,
                 currentUser: action.payload,
