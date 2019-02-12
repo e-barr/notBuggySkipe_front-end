@@ -13,14 +13,14 @@ class MeetingRoomTile extends Component {
         return (
             <div className="ui raised padded container segment">
                 <h2>{room.name}</h2>
+                <div className="iframe-container">
                     <iframe
                     src={`https://tokbox.com/embed/embed/ot-embed.js?embedId=cb6af7f6-5ac4-4691-9850-07636964bfb7&room=${room.name}&iframe=true`}
                     title={room.name}
                     allow="microphone; camera"
                     scrolling="no"
-                    width="600px"
-                    height="400px"
                     ></iframe>
+                </div>
 
                 <br></br>
                 <br></br>
