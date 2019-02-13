@@ -18,13 +18,14 @@ import InvitesTile from './InvitesTile'
 import ViewInvites from './ViewInvites'
 import MeetingRoomTile from './MeetingRoomTile'
 import AddressBook from './AddressBook'
-import { isEditingProfile, toggleShowInvites } from '../actions'
+import ViewAddressBook from './ViewAddressBook'
+import { isEditingProfile, toggleShowInvites, toggleViewAddressBook } from '../actions'
 
 class Content extends Component {
     render() {
         if (this.props.user) {
-            const { username, city, country, image_url } = this.props.user
-            const { isEditing, isViewingInvites, isStartingMeeting } = this.props.content
+            const { username, city, country, image_url, contacts } = this.props.user
+            const { isEditing, isViewingInvites, isStartingMeeting, isViewingAddressBook } = this.props.content
 
             if (isStartingMeeting) {
                 return (
@@ -38,6 +39,13 @@ class Content extends Component {
                 return (
                     <ViewInvites
                         user={this.props.user}
+                    />
+                )
+            } else if (isViewingAddressBook) {
+                return (
+                    <ViewAddressBook
+                        toggleViewAddressBook={this.props.toggleViewAddressBook}
+                        contacts={contacts}
                     />
                 )
             } else {
@@ -54,7 +62,9 @@ class Content extends Component {
                             <InvitesTile 
                                 toggleShowInvites={this.props.toggleShowInvites}
                             />
-                            <AddressBook />
+                            <AddressBook
+                                toggleViewAddressBook={this.props.toggleViewAddressBook}
+                            />
                         </div>
                     </div>
                 )
@@ -72,4 +82,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { isEditingProfile, toggleShowInvites })(Content);
+export default connect(mapStateToProps, { isEditingProfile, toggleShowInvites, toggleViewAddressBook })(Content);

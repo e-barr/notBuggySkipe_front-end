@@ -28,12 +28,12 @@ class ViewInvites extends Component {
                                 <button 
                                     className="ui float right green button"
                                     onClick={() => this.props.startMeeting(this.props.currentUser, room.id)}
-                                    >start</button>
+                                    >Start</button>
                                 <button
                                     className="ui red button"
                                     invite_id={inviteId}
                                     onClick={() => this.props.deleteInvite(inviteId, this.props.currentUser.id)}
-                                >cancel</button>
+                                >Cancel</button>
                             </div>
                     </div>
                 </div>

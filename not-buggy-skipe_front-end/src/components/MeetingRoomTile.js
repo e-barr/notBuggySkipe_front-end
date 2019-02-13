@@ -7,7 +7,6 @@ import './MeetingRoomTile.css'
 class MeetingRoomTile extends Component {
     render() {
         const room = this.props.currentUser.meeting_room
-        console.log(this.props)
 
         if (this.props.currentUser && room) {
         return (
@@ -28,7 +27,7 @@ class MeetingRoomTile extends Component {
                     style={{ marginTop: '2%' }}
                     onClick={this.props.endMeeting}
                     >
-                    end
+                    End
                     </button>
 
                     </div>

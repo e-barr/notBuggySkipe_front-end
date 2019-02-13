@@ -7,7 +7,8 @@ import {
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
     START_MEETING,
-    END_MEETING
+    END_MEETING,
+    TOGGLE_VIEW_ADDRESS_BOOK
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -218,5 +219,11 @@ export const startMeeting = (currentUser, meeting_id) => async dispatch => {
 export const endMeeting = () => {
     return {
         type: END_MEETING
+    }
+}
+
+export const toggleViewAddressBook = () => {
+    return {
+        type: TOGGLE_VIEW_ADDRESS_BOOK
     }
 }

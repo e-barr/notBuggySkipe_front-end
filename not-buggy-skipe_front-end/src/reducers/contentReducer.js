@@ -3,7 +3,8 @@ import {
     SUBMIT_PROFILE_CHANGES,
     TOGGLE_SHOW_INVITES,
     START_MEETING,
-    END_MEETING
+    END_MEETING,
+    TOGGLE_VIEW_ADDRESS_BOOK
  } from '../actions/types'
 
 const defaultState = {
@@ -12,7 +13,8 @@ const defaultState = {
     isStartingMeeting: false,
     enteredRoom: false,
     isSendingInvite: false,
-    isViewingInvites: false
+    isViewingInvites: false,
+    isViewingAddressBook: false
 }
 
 export default (state = defaultState, action) => {
@@ -30,6 +32,12 @@ export default (state = defaultState, action) => {
         case END_MEETING:
             return {
                 ...defaultState, isStartingMeeting: false
+            }
+        case TOGGLE_VIEW_ADDRESS_BOOK:
+            const isViewingAddressBook = !state.isViewingAddressBook
+            return {
+                ...defaultState,
+                isViewingAddressBook
             }
         default:
             return state;

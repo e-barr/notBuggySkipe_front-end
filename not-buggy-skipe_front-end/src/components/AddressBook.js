@@ -8,9 +8,12 @@ const addressBookStyle = {
     textShadow: '2px 2px 4px grey'
 }
 
-const AddressBook = () => {
+const AddressBook = (props) => {
     return (
-        <div className="card">
+        <div
+            className="card"
+            onClick={props.toggleViewAddressBook}
+        >
             <div className="image">
             <i className="massive address book outline icon" style={addressBookStyle}></i>
             </div>
