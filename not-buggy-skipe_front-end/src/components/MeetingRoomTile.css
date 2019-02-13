@@ -2,7 +2,6 @@
     overflow: hidden;
     padding-top: 56.25%;
     position: relative;
-    /* margin-bottom: 7%; */
 }
 
 .iframe-container iframe {
@@ -14,9 +13,4 @@
     top: 0;
     width: 80%;
     margin-left: 10%;
-  }
-
-.iframe-container button {
-      /* position: relative; */
-      /* margin-right: 10px; */
   }

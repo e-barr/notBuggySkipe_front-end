@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 
 const invitesTileStyle = {
-    marginTop: '40px',
-    marginBottom: '80px'
+    marginTop: '90px',
+    marginBottom: '80px',
+    marginLeft: '20px',
+    color: 'whitesmoke',
+    textShadow: '2px 2px 4px grey'
 }
+
 
 class InvitesTile extends Component {
 
     render() {
         return(
-            <div className="card">
+            <div
+                className="card"
+                onClick={this.props.toggleShowInvites}
+            >
                 <div className="image">
-                    <img
-                        src="/images/envelope.png"
-                        alt="envelope"
-                        style={invitesTileStyle}
-                        onClick={this.props.toggleShowInvites}
-                    />
+                    <i className="massive envelope outline icon"
+                    style={invitesTileStyle}
+                    ></i>
                 </div>
             </div>
         )

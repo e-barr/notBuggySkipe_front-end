@@ -17,6 +17,7 @@ import EditProfile from './EditProfile'
 import InvitesTile from './InvitesTile'
 import ViewInvites from './ViewInvites'
 import MeetingRoomTile from './MeetingRoomTile'
+import AddressBook from './AddressBook'
 import { isEditingProfile, toggleShowInvites } from '../actions'
 
 class Content extends Component {
@@ -42,7 +43,7 @@ class Content extends Component {
             } else {
                 return (
                     <div className="ui raised padded text container segment">
-                        <div className="ui two stackable cards">
+                        <div className="ui three stackable cards">
                             <ProfileTile
                                 username={username}
                                 city={city}
@@ -53,6 +54,7 @@ class Content extends Component {
                             <InvitesTile 
                                 toggleShowInvites={this.props.toggleShowInvites}
                             />
+                            <AddressBook />
                         </div>
                     </div>
                 )
