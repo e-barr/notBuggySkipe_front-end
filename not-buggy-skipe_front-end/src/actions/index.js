@@ -8,7 +8,8 @@ import {
     TOGGLE_SHOW_INVITES,
     START_MEETING,
     END_MEETING,
-    TOGGLE_VIEW_ADDRESS_BOOK
+    TOGGLE_VIEW_ADDRESS_BOOK,
+    DELETE_CONTACT
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -226,4 +227,33 @@ export const toggleViewAddressBook = () => {
     return {
         type: TOGGLE_VIEW_ADDRESS_BOOK
     }
+}
+
+export const deleteContact = (id) => async dispatch => {
+   
+    const token = localStorage.token
+    let resp = {}
+    let payload
+
+    try {
+        resp = await db.delete('/api/v1/contacts', {
+            data: {
+                contact: { id }
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${token}`
+            },
+        })
+        payload = resp.data.user
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Contact failed to delete.", `${resp.error}`, "error")
+    }
+
+    dispatch({
+        type: GET_USER_INFO,
+        payload
+    })
+
 }

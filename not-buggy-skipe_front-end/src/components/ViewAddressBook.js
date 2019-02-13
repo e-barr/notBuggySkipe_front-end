@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { deleteContact } from '../actions'
 
 const addressCardStyle = {
     fontSize: '36px',
@@ -28,7 +31,12 @@ class ViewAddressBook extends Component {
                     <div className="extra content">
                         <div className="ui two buttons">
                             <div className="ui basic green button">Send Invite</div>
-                            <div className="ui basic red button">Delete</div>
+                            <div
+                            className="ui basic red button"
+                            onClick={() => this.props.deleteContact(contact.id)}
+                            >
+                                Delete
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,4 +67,4 @@ class ViewAddressBook extends Component {
     }
 }
 
-export default ViewAddressBook;
+export default connect(null, { deleteContact })(ViewAddressBook);
