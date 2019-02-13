@@ -39,7 +39,9 @@ class ViewAddressBook extends Component {
         const contacts = this.props.contacts
         return (
             <div className="ui raised padded container segment">
-                <h1>ViewAddressBook</h1><br></br>
+                <div>
+                    <h1>AddressBook</h1><i className="ui floated right plus circle icon" style={{ fontSize: '40px' }}></i><br></br>
+                </div>
                 <div className="ui cards">
                     {this.renderContacts(contacts)}
                 </div>
@@ -48,6 +50,7 @@ class ViewAddressBook extends Component {
                 <button
                     className="ui right floated button"
                     onClick={this.props.toggleViewAddressBook}
+                    style={{ marginTop: '-35px' }}
                     >
                     Close
                 </button>
