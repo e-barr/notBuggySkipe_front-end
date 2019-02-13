@@ -4,7 +4,8 @@ import {
     TOGGLE_SHOW_INVITES,
     START_MEETING,
     END_MEETING,
-    TOGGLE_VIEW_ADDRESS_BOOK
+    TOGGLE_VIEW_ADDRESS_BOOK,
+    TOGGLE_SEND_INVITE_FORM
  } from '../actions/types'
 
 const defaultState = {
@@ -12,9 +13,9 @@ const defaultState = {
     isViewingAllUsers: false,
     isStartingMeeting: false,
     enteredRoom: false,
-    isSendingInvite: false,
     isViewingInvites: false,
-    isViewingAddressBook: false
+    isViewingAddressBook: false,
+    isViewingSendInviteForm: false
 }
 
 export default (state = defaultState, action) => {
@@ -38,6 +39,12 @@ export default (state = defaultState, action) => {
             return {
                 ...defaultState,
                 isViewingAddressBook
+            }
+        case TOGGLE_SEND_INVITE_FORM:
+            const isViewingSendInviteForm = !state.isViewingSendInviteForm
+            return {
+                ...defaultState,
+                isViewingSendInviteForm
             }
         default:
             return state;

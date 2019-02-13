@@ -19,13 +19,19 @@ import ViewInvites from './ViewInvites'
 import MeetingRoomTile from './MeetingRoomTile'
 import AddressBook from './AddressBook'
 import ViewAddressBook from './ViewAddressBook'
-import { isEditingProfile, toggleShowInvites, toggleViewAddressBook } from '../actions'
+import SendInviteForm from './SendInviteForm'
+import { 
+    isEditingProfile,
+    toggleShowInvites,
+    toggleViewAddressBook,
+    toggleSendInviteForm
+} from '../actions'
 
 class Content extends Component {
     render() {
         if (this.props.user) {
             const { username, city, country, image_url, contacts } = this.props.user
-            const { isEditing, isViewingInvites, isStartingMeeting, isViewingAddressBook } = this.props.content
+            const { isEditing, isViewingInvites, isStartingMeeting, isViewingAddressBook, isViewingSendInviteForm } = this.props.content
 
             if (isStartingMeeting) {
                 return (
@@ -46,7 +52,12 @@ class Content extends Component {
                     <ViewAddressBook
                         toggleViewAddressBook={this.props.toggleViewAddressBook}
                         contacts={contacts}
+                        toggleSendInviteForm={this.props.toggleSendInviteForm}
                     />
+                )
+            } else if (isViewingSendInviteForm) {
+                return (
+                    <SendInviteForm />
                 )
             } else {
                 return (
@@ -82,4 +93,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { isEditingProfile, toggleShowInvites, toggleViewAddressBook })(Content);
+export default connect(mapStateToProps, { isEditingProfile, toggleShowInvites, toggleViewAddressBook, toggleSendInviteForm })(Content);

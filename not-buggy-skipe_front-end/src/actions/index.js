@@ -9,7 +9,8 @@ import {
     START_MEETING,
     END_MEETING,
     TOGGLE_VIEW_ADDRESS_BOOK,
-    DELETE_CONTACT
+    DELETE_CONTACT,
+    TOGGLE_SEND_INVITE_FORM
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -255,5 +256,10 @@ export const deleteContact = (id) => async dispatch => {
         type: GET_USER_INFO,
         payload
     })
+}
 
+export const toggleSendInviteForm = () => {
+    return {
+        type: TOGGLE_SEND_INVITE_FORM
+    }
 }

@@ -11,7 +11,6 @@ const addressCardStyle = {
 class ViewAddressBook extends Component {
     renderContacts = contacts => {
         return contacts.map(contact => {
-            console.log(contact)
             const user = contact.user_2
             const { username, image_url } = user
             return (
@@ -30,7 +29,12 @@ class ViewAddressBook extends Component {
                     </div>
                     <div className="extra content">
                         <div className="ui two buttons">
-                            <div className="ui basic green button">Send Invite</div>
+                            <div
+                                className="ui basic green button"
+                                onClick={this.props.toggleSendInviteForm}
+                            >
+                                Send Invite
+                            </div>
                             <div
                             className="ui basic red button"
                             onClick={() => this.props.deleteContact(contact.id)}

@@ -4,7 +4,7 @@ const invitesTileStyle = {
     marginTop: '90px',
     marginBottom: '80px',
     marginLeft: '20px',
-    color: 'white',
+    color: 'rgb(245, 194, 194)',
     textShadow: '2px 2px 4px grey'
 }
 
