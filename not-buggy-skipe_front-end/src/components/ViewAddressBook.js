@@ -47,9 +47,12 @@ class ViewAddressBook extends Component {
         const contacts = this.props.contacts
         return (
             <div className="ui raised padded container segment">
-                <div>
-                    <h1>AddressBook</h1><i className="ui floated right plus circle icon" style={{ fontSize: '40px' }}></i><br></br>
-                </div>
+                    <h1>AddressBook</h1><button 
+                        className="circular ui right floated icon button"
+                        style={{ marginTop: '-45px', marginRight: '5px'}}
+                        >
+                        <i className="plus icon"></i>
+                        </button>
                 <div className="ui cards">
                     {this.renderContacts(contacts)}
                 </div>
