@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { deleteContact } from '../actions'
+import { deleteContact, setInviteReceiver } from '../actions'
 
 const addressCardStyle = {
     fontSize: '36px',
@@ -31,7 +31,11 @@ class ViewAddressBook extends Component {
                         <div className="ui two buttons">
                             <div
                                 className="ui basic green button"
-                                onClick={this.props.toggleSendInviteForm}
+                                onClick={() => {
+                                    this.props.setInviteReceiver(user)
+                                    this.props.toggleSendInviteForm()
+                                    }
+                                }
                             >
                                 Send Invite
                             </div>
@@ -74,4 +78,4 @@ class ViewAddressBook extends Component {
     }
 }
 
-export default connect(null, { deleteContact })(ViewAddressBook);
+export default connect(null, { deleteContact, setInviteReceiver })(ViewAddressBook);

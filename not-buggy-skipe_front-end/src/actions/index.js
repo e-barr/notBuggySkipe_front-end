@@ -9,8 +9,10 @@ import {
     START_MEETING,
     END_MEETING,
     TOGGLE_VIEW_ADDRESS_BOOK,
-    DELETE_CONTACT,
-    TOGGLE_SEND_INVITE_FORM
+    TOGGLE_SEND_INVITE_FORM,
+    SET_INVITE_INFO,
+    SET_INVITE_RECEIVER,
+    SET_INVITE_MESSAGE_AND_ROOM_NAME
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -262,4 +264,56 @@ export const toggleSendInviteForm = () => {
     return {
         type: TOGGLE_SEND_INVITE_FORM
     }
+}
+
+export const setInviteInfo = (inviteReceiver, inviteMessage, inviteRoomName) => {
+    return {
+        type: SET_INVITE_INFO,
+        payload: { inviteReceiver, inviteMessage, inviteRoomName }
+    }
+}
+
+export const setInviteReceiver = (inviteReceiver) => {
+    return {
+        type: SET_INVITE_RECEIVER,
+        payload: inviteReceiver
+    }
+}
+
+export const setInviteMessageAndRoomName = (inviteMessage, roomName) => {
+    return {
+        type: SET_INVITE_MESSAGE_AND_ROOM_NAME,
+        payload: { inviteMessage, roomName }
+    }
+}
+
+export const sendInvite = ({ sender_id, receiver_id, room_name, content }) => async dispatch => {
+    const token = localStorage.token
+    let resp = {}
+    let payload
+
+    try {
+        resp = await db.post('/api/v1/invites', {
+            invite: {
+                sender_id,
+                receiver_id,
+                room_name,
+                content
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Invite creation failed", "Please be sure that your room name is unique. Note that no message is required.", "error")
+    }
+
+    payload = resp.data
+
+    dispatch({
+        type: GET_USER_INFO,
+        payload
+    })
 }
