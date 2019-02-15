@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { toggleAddContacts, fetchAllUsers } from '../actions'
+import { toggleAddContacts, fetchAllUsers, addContact } from '../actions'
 
 class ViewAddContacts extends Component {
     componentDidMount() {
@@ -9,6 +9,7 @@ class ViewAddContacts extends Component {
     }
 
     renderPossibleContacts = () => {
+        const user = this.props.user
         console.log(this.props)
         if (!this.props.allUsers) {
             return null
@@ -19,11 +20,15 @@ class ViewAddContacts extends Component {
             return (
                 <div className="item" key={contact.id}>
                     <div className="right floated content">
-                        <button className="ui right floated button">Add</button>
+                        <button
+                            className="ui right floated button"
+                            onClick={() => this.props.addContact(user.id, contact.id)}
+                        >Add</button>
                     </div>
                     <img
                         className="ui avatar image"
                         src={contact.image_url}
+                        alt={contact.username}
                     />
                     <div className="content">
                         {contact.username}
@@ -57,8 +62,9 @@ class ViewAddContacts extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        allUsers: state.content.allUsers
+        allUsers: state.content.allUsers,
+        user: state.auth.currentUser
     }
 }
 
-export default connect(mapStateToProps, { toggleAddContacts, fetchAllUsers  })(ViewAddContacts);
+export default connect(mapStateToProps, { toggleAddContacts, fetchAllUsers, addContact  })(ViewAddContacts);

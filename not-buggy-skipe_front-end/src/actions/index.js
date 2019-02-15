@@ -14,8 +14,6 @@ import {
     SET_INVITE_RECEIVER,
     SET_INVITE_MESSAGE_AND_ROOM_NAME,
     TOGGLE_ADD_CONTACTS,
-    FETCH_ALL_USERS,
-    CREATE_CONTACT,
     SET_ALL_USERS
 } from './types'
 import db from '../apis/db'
@@ -402,6 +400,39 @@ export const fetchAllUsers = () => async dispatch => {
 
     dispatch({
         type: SET_ALL_USERS,
+        payload
+    })
+}
+
+export const addContact = (user_1_id, user_2_id) => async dispatch => {
+    let resp = {}
+    let payload
+    const token = localStorage.token
+
+    try {
+        resp = await db.post('/api/v1/contacts',
+            {
+                contact: {
+                    user_1_id,
+                    user_2_id
+                }
+            },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization' : `Bearer ${token}`
+                }
+            }
+        )
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Failed to add contact.", `${resp.error}`, "error")
+    }
+
+    payload = resp.data.user
+
+    dispatch({
+        type: GET_USER_INFO,
         payload
     })
 }

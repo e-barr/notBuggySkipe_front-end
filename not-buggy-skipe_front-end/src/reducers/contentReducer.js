@@ -8,9 +8,7 @@ import {
     TOGGLE_SEND_INVITE_FORM,
     SET_INVITE_RECEIVER,
     TOGGLE_ADD_CONTACTS,
-    FETCH_ALL_USERS,
     SET_ALL_USERS,
-    SET_INVITE_MESSAGE_AND_ROOM_NAME
  } from '../actions/types'
 
 const defaultState = {
