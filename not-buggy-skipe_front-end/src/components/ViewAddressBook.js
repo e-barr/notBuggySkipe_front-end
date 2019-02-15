@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { deleteContact, setInviteReceiver } from '../actions'
+import {
+    deleteContact,
+    setInviteReceiver,
+    toggleAddContacts
+} from '../actions'
 
 const addressCardStyle = {
     fontSize: '36px',
@@ -58,6 +62,7 @@ class ViewAddressBook extends Component {
                     <h1>AddressBook</h1><button 
                         className="circular ui right floated icon button"
                         style={{ marginTop: '-45px', marginRight: '5px'}}
+                        onClick={this.props.toggleAddContacts}
                         >
                         <i className="plus icon"></i>
                         </button>
@@ -78,4 +83,4 @@ class ViewAddressBook extends Component {
     }
 }
 
-export default connect(null, { deleteContact, setInviteReceiver })(ViewAddressBook);
+export default connect(null, { deleteContact, setInviteReceiver, toggleAddContacts })(ViewAddressBook);

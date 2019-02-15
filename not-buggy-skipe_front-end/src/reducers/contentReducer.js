@@ -7,6 +7,7 @@ import {
     TOGGLE_VIEW_ADDRESS_BOOK,
     TOGGLE_SEND_INVITE_FORM,
     SET_INVITE_RECEIVER,
+    TOGGLE_ADD_CONTACTS,
     SET_INVITE_MESSAGE_AND_ROOM_NAME
  } from '../actions/types'
 
@@ -18,9 +19,10 @@ const defaultState = {
     isViewingInvites: false,
     isViewingAddressBook: false,
     isViewingSendInviteForm: false,
+    isViewingAddContacts: false,
     inviteReceiver: null,
     inviteMessage: '',
-    inviteRoomName: null
+    inviteRoomName: null,
 }
 
 
@@ -77,6 +79,12 @@ export default (state = defaultState, action) => {
             return {
                 ...updatedDefault,
                 inviteReceiver: action.payload
+            }
+        case TOGGLE_ADD_CONTACTS:
+            const isViewingAddContacts = !state.isViewingAddContacts
+            return {
+                ...defaultState,
+                isViewingAddContacts
             }
         default:
             return state;

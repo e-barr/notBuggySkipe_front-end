@@ -12,7 +12,9 @@ import {
     TOGGLE_SEND_INVITE_FORM,
     SET_INVITE_INFO,
     SET_INVITE_RECEIVER,
-    SET_INVITE_MESSAGE_AND_ROOM_NAME
+    SET_INVITE_MESSAGE_AND_ROOM_NAME,
+    TOGGLE_ADD_CONTACTS,
+    CREATE_CONTACT
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -336,5 +338,56 @@ export const sendInvite = ({ sender_id, receiver_id, room_name, content }) => as
     }
 
     return dispatch(returnedFunc)
+}
 
+export const toggleAddContacts = () => {
+    return {
+        type: TOGGLE_ADD_CONTACTS
+    }
+}
+
+export const createContact = (user_1_id, user_2_id) => async dispatch => {
+    const token = localStorage.token
+    let resp = {}
+    let payload
+
+    try {
+        resp = await db.post('/api/v1/contacts', {
+            contact: {
+                user_1_id,
+                user_2_id,
+            }},
+            { 
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+                }
+            }
+        )
+        swal("Success!", "Your have added a new contact.", "success")
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Contact creation failed", `${error}`, "error")
+    }
+
+    payload = resp.data.user
+
+    // let returnedFunc = (dispatch) => {
+    //     dispatch({
+    //         type: CREATE_CONTACT,
+    //         payload
+    //     })
+
+    //     dispatch({
+    //         type: GET_USER_INFO,
+    //         payload
+    //     })
+
+    // }
+
+    // return dispatch(returnedFunc)
+    dispatch({
+        type: GET_USER_INFO,
+        payload
+    })
 }

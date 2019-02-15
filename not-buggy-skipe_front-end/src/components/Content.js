@@ -20,6 +20,7 @@ import MeetingRoomTile from './MeetingRoomTile'
 import AddressBook from './AddressBook'
 import ViewAddressBook from './ViewAddressBook'
 import SendInviteForm from './SendInviteForm'
+import ViewAddContacts from './ViewAddContacts'
 import { 
     isEditingProfile,
     toggleShowInvites,
@@ -31,7 +32,7 @@ class Content extends Component {
     render() {
         if (this.props.user) {
             const { username, city, country, image_url, contacts } = this.props.user
-            const { isEditing, isViewingInvites, isStartingMeeting, isViewingAddressBook, isViewingSendInviteForm } = this.props.content
+            const { isEditing, isViewingInvites, isStartingMeeting, isViewingAddressBook, isViewingSendInviteForm, isViewingAddContacts } = this.props.content
 
             if (isStartingMeeting) {
                 return (
@@ -58,6 +59,10 @@ class Content extends Component {
             } else if (isViewingSendInviteForm) {
                 return (
                     <SendInviteForm />
+                )
+            } else if (isViewingAddContacts) {
+                return (
+                    <ViewAddContacts />
                 )
             } else {
                 return (
