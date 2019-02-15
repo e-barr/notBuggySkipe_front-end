@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 
-import { toggleSendInviteForm } from '../actions'
+import { toggleSendInviteForm, sendInvite } from '../actions'
 import { renderField } from './Utils'
 
 class SendInviteForm extends Component {
@@ -14,8 +14,13 @@ class SendInviteForm extends Component {
     // }
 
     onSubmit = (formValues) => {
-        console.log('form values are:')
-        console.log(formValues)
+        const sender_id = this.props.user.id
+        const receiver_id = this.props.content.inviteReceiver.id
+        const room_name = formValues.roomName
+        const content = formValues.message || ''
+
+        this.props.sendInvite({ sender_id, receiver_id, room_name, content })
+
     }
 
     renderForm = () => {
@@ -94,4 +99,4 @@ const formWrapped = reduxForm({
     validate
 })(SendInviteForm)
 
-export default connect(mapStateToProps, { toggleSendInviteForm })(formWrapped);
+export default connect(mapStateToProps, { toggleSendInviteForm, sendInvite })(formWrapped);

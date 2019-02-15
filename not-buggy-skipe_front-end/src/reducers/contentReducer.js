@@ -67,7 +67,6 @@ export default (state = defaultState, action) => {
                 isViewingAddressBook
             }
         case TOGGLE_SEND_INVITE_FORM:
-            console.log('TOGGLE_SEND_INVITE_FORM in contentReducer reached')
             const isViewingSendInviteForm = !state.isViewingSendInviteForm
             return {
                 ...defaultState,

@@ -307,12 +307,14 @@ export const sendInvite = ({ sender_id, receiver_id, room_name, content }) => as
                 receiver_id,
                 room_name,
                 content
-            },
-            headers: {
+            }},
+            { 
+                headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
+                }
             }
-        })
+        )
     } catch (error) {
         resp = { error: error.message }
         swal("Invite creation failed", "Please be sure that your room name is unique. Note that no message is required.", "error")
