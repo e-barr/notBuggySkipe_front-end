@@ -315,15 +315,26 @@ export const sendInvite = ({ sender_id, receiver_id, room_name, content }) => as
                 }
             }
         )
+        swal("Success!", "Your invitation has been sent.", "success")
     } catch (error) {
         resp = { error: error.message }
         swal("Invite creation failed", "Please be sure that your room name is unique. Note that no message is required.", "error")
     }
 
-    payload = resp.data
+    payload = resp.data.user
 
-    dispatch({
-        type: GET_USER_INFO,
-        payload
-    })
+    let returnedFunc = (dispatch) => {
+        dispatch({
+            type: TOGGLE_SEND_INVITE_FORM
+        })
+
+        dispatch({
+            type: GET_USER_INFO,
+            payload
+        })
+
+    }
+
+    return dispatch(returnedFunc)
+
 }
