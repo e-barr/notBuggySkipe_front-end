@@ -6,7 +6,6 @@ import {
     END_MEETING,
     TOGGLE_VIEW_ADDRESS_BOOK,
     TOGGLE_SEND_INVITE_FORM,
-    SET_INVITE_INFO,
     SET_INVITE_RECEIVER,
     SET_INVITE_MESSAGE_AND_ROOM_NAME
  } from '../actions/types'
@@ -24,75 +23,61 @@ const defaultState = {
     inviteRoomName: null
 }
 
+
 export default (state = defaultState, action) => {
     const { inviteReceiver, inviteMessage, inviteRoomName } = state
-    
+    const updatedDefault = {
+        ...state,
+        inviteReceiver,
+        inviteMessage,
+        inviteRoomName
+    }
+   
     switch(action.type) {
         case IS_EDITING_PROFILE:
             const isEditing = !state.isEditing
             return {
-                ...state,
-                isEditing,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
+                ...updatedDefault,
+                isEditing
             };
         case SUBMIT_PROFILE_CHANGES:
             return {
-                ...defaultState,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
+                ...defaultState
             };
         case TOGGLE_SHOW_INVITES:
             const isViewingInvites = !state.isViewingInvites
             return {
-                ...defaultState,
-                isViewingInvites,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
+                ...updatedDefault,
+                isViewingInvites
             }
         case START_MEETING:
             return {
-                ...defaultState,
-                isStartingMeeting: true,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
+                ...updatedDefault,
+                isStartingMeeting: true
             }
         case END_MEETING:
             return {
-                ...defaultState,
+                ...updatedDefault,
                 isStartingMeeting: false,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
             }
         case TOGGLE_VIEW_ADDRESS_BOOK:
             const isViewingAddressBook = !state.isViewingAddressBook
             return {
-                ...defaultState,
-                isViewingAddressBook,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
+                ...updatedDefault,
+                isViewingAddressBook
             }
         case TOGGLE_SEND_INVITE_FORM:
+            console.log('TOGGLE_SEND_INVITE_FORM in contentReducer reached')
             const isViewingSendInviteForm = !state.isViewingSendInviteForm
             return {
                 ...defaultState,
                 isViewingSendInviteForm,
-                inviteReceiver,
-                inviteMessage,
-                inviteRoomName
+                inviteReceiver
             }
         case SET_INVITE_RECEIVER:
             return {
-                ...state,
-                inviteReceiver: action.payload,
-                inviteMessage,
-                inviteRoomName
+                ...updatedDefault,
+                inviteReceiver: action.payload
             }
         default:
             return state;

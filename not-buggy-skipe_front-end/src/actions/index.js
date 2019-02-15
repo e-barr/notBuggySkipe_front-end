@@ -126,19 +126,26 @@ export const submitProfileChanges = (currentUser, updatedValues) => async dispat
                 'Content-Type': 'application/json'
             },
         }, headersConfig)
-        payload = resp.data
+        payload = resp.data.user
         swal("Success!", "Your account has been successfully updated.", "success")
-        history.push("/main")
     } catch (error) {
         resp = { error: error.message }
         swal("Profile update failed.", `${resp.error}`, "error")
     }
 
-    dispatch({
-        type: SUBMIT_PROFILE_CHANGES,
-        payload
-    })
-    
+    let returnedFunc = (dispatch) => {
+        dispatch({
+            type: SUBMIT_PROFILE_CHANGES,
+            payload
+        })
+        
+        dispatch({
+            type: GET_USER_INFO,
+            payload
+        })
+    }
+
+    return dispatch(returnedFunc)
 }
 
 export const isEditingProfile = () => {
@@ -261,6 +268,7 @@ export const deleteContact = (id) => async dispatch => {
 }
 
 export const toggleSendInviteForm = () => {
+    console.log('toggleSendInviteForm in actions reached.')
     return {
         type: TOGGLE_SEND_INVITE_FORM
     }
