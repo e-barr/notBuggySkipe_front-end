@@ -14,7 +14,9 @@ import {
     SET_INVITE_RECEIVER,
     SET_INVITE_MESSAGE_AND_ROOM_NAME,
     TOGGLE_ADD_CONTACTS,
-    CREATE_CONTACT
+    FETCH_ALL_USERS,
+    CREATE_CONTACT,
+    SET_ALL_USERS
 } from './types'
 import db from '../apis/db'
 import swal from 'sweetalert'
@@ -372,22 +374,34 @@ export const createContact = (user_1_id, user_2_id) => async dispatch => {
 
     payload = resp.data.user
 
-    // let returnedFunc = (dispatch) => {
-    //     dispatch({
-    //         type: CREATE_CONTACT,
-    //         payload
-    //     })
-
-    //     dispatch({
-    //         type: GET_USER_INFO,
-    //         payload
-    //     })
-
-    // }
-
-    // return dispatch(returnedFunc)
     dispatch({
         type: GET_USER_INFO,
+        payload
+    })
+}
+
+export const fetchAllUsers = () => async dispatch => {
+    let resp = {}
+    let payload
+    const token = localStorage.token
+
+    try {
+        resp = await db.get('/api/v1/users', {
+        headers: {
+            'Authorization' : `Bearer ${token}`
+        }
+    })
+    } catch (error) {
+        resp = { error: error.message }
+        swal("Fetch all users failed", `${resp.error}`, "error")
+    }
+
+    console.log('payload is:')
+    console.log(payload)
+    payload = resp.data
+
+    dispatch({
+        type: SET_ALL_USERS,
         payload
     })
 }
