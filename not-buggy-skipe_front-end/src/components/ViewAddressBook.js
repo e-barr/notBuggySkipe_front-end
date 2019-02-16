@@ -13,6 +13,19 @@ const addressCardStyle = {
 }
 
 class ViewAddressBook extends Component {
+    getUniqueContacts = () => {
+        const contacts = this.props.user.contacts.map(contact => contact.user_2)
+        const contactIds = contacts.map(contact => contact.id)
+
+        const uniqueContactIds = []
+
+        contactIds.forEach(contactId => uniqueContactIds.includes(contactId) === false ? uniqueContactIds.push(contactId) : null)
+
+        const uniqueContacts = uniqueContactIds.map(contactId => contacts.find(contact => contact.id === contactId))
+
+        return uniqueContacts
+    }
+
     renderContacts = contacts => {
         return contacts.map(contact => {
             const user = contact.user_2
@@ -83,4 +96,10 @@ class ViewAddressBook extends Component {
     }
 }
 
-export default connect(null, { deleteContact, setInviteReceiver, toggleAddContacts })(ViewAddressBook);
+const mapStateToProps = (state) => {
+    return {
+        user: state.auth.currentUser
+    }
+}
+
+export default connect(mapStateToProps, { deleteContact, setInviteReceiver, toggleAddContacts })(ViewAddressBook);

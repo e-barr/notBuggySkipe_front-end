@@ -270,7 +270,6 @@ export const deleteContact = (id) => async dispatch => {
 }
 
 export const toggleSendInviteForm = () => {
-    console.log('toggleSendInviteForm in actions reached.')
     return {
         type: TOGGLE_SEND_INVITE_FORM
     }
@@ -346,38 +345,6 @@ export const toggleAddContacts = () => {
     }
 }
 
-export const createContact = (user_1_id, user_2_id) => async dispatch => {
-    const token = localStorage.token
-    let resp = {}
-    let payload
-
-    try {
-        resp = await db.post('/api/v1/contacts', {
-            contact: {
-                user_1_id,
-                user_2_id,
-            }},
-            { 
-                headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-                }
-            }
-        )
-        swal("Success!", "Your have added a new contact.", "success")
-    } catch (error) {
-        resp = { error: error.message }
-        swal("Contact creation failed", `${error}`, "error")
-    }
-
-    payload = resp.data.user
-
-    dispatch({
-        type: GET_USER_INFO,
-        payload
-    })
-}
-
 export const fetchAllUsers = () => async dispatch => {
     let resp = {}
     let payload
@@ -385,17 +352,15 @@ export const fetchAllUsers = () => async dispatch => {
 
     try {
         resp = await db.get('/api/v1/users', {
-        headers: {
-            'Authorization' : `Bearer ${token}`
-        }
-    })
+            headers: {
+                'Authorization' : `Bearer ${token}`
+            }
+        })
     } catch (error) {
         resp = { error: error.message }
         swal("Fetch all users failed", `${resp.error}`, "error")
     }
 
-    console.log('payload is:')
-    console.log(payload)
     payload = resp.data
 
     dispatch({
@@ -406,7 +371,9 @@ export const fetchAllUsers = () => async dispatch => {
 
 export const addContact = (user_1_id, user_2_id) => async dispatch => {
     let resp = {}
+    let resp2 = {}
     let payload
+    let payload2
     const token = localStorage.token
 
     try {
@@ -424,15 +391,36 @@ export const addContact = (user_1_id, user_2_id) => async dispatch => {
                 }
             }
         )
+        swal("Success!", "Your have added a new contact.", "success")
     } catch (error) {
         resp = { error: error.message }
         swal("Failed to add contact.", `${resp.error}`, "error")
     }
-
     payload = resp.data.user
 
-    dispatch({
-        type: GET_USER_INFO,
-        payload
-    })
+    try {
+        resp2 = await db.get('/api/v1/users', {
+            headers: {
+                'Authorization' : `Bearer ${token}`
+            }
+        })
+        payload2 = resp2.data
+    } catch (error) {
+        resp2 = { error: error.message }
+        swal("Fetch all users failed", `${resp2.error}`, "error")
+    }
+
+    let returnedFunc = dispatch => {
+        dispatch({
+            type: GET_USER_INFO,
+            payload
+        })
+
+        dispatch({
+            type: SET_ALL_USERS,
+            payload: payload2
+        })
+    }
+
+    return dispatch(returnedFunc)
 }

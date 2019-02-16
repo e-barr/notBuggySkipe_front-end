@@ -6,13 +6,6 @@ import { toggleSendInviteForm, sendInvite } from '../actions'
 import { renderField } from './Utils'
 
 class SendInviteForm extends Component {
-    // state = {
-    //     sender_id: this.props.user.id,
-    //     receiver_id: this.props.inviteReceiver ? this.props.inviteReceiver.id : '' ,
-    //     message: '',
-    //     room_name: ''
-    // }
-
     onSubmit = (formValues) => {
         const sender_id = this.props.user.id
         const receiver_id = this.props.content.inviteReceiver.id
@@ -61,7 +54,6 @@ class SendInviteForm extends Component {
     }
 
     render() {
-        console.log(this.props)
         if (this.props.user) {
             const receiver = this.props.content.inviteReceiver
             return (
