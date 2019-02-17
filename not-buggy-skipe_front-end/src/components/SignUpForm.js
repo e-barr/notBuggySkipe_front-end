@@ -8,6 +8,9 @@ import { signUp } from '../actions'
 class SignUpForm extends Component {
     onSubmit = (formValues) => {
         this.props.signUp(formValues)
+        return (
+            <div className="ui active centered inline loader"></div>
+        )
     }
 
     renderForm = () => {

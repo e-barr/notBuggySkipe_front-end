@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { toggleShowInvites, deleteInvite, startMeeting } from '../actions'
 
 class ViewInvites extends Component {
-    renderInvite = (inviteId, otherUser, room) => {
+    renderInvite = (inviteId, otherUser, room, content) => {
         const { image_url, username } = otherUser
 
         return (
@@ -22,7 +22,10 @@ class ViewInvites extends Component {
                             </h2>
                         </div>
                         <div className="ui attached segment" >
-                            <p style={{ textAlign: 'center', textOverflow: 'clip' }}>{room.name}</p>
+                            <div style={{ textAlign: 'center', textOverflow: 'clip'}}>
+                                {room.name}<br></br>
+                                {content.length === 0 ? '---' : content }
+                            </div>
                         </div>
                             <div className="ui two bottom attached buttons">
                                 <button 
@@ -42,9 +45,10 @@ class ViewInvites extends Component {
     }
 
     renderReceivedInvites = (invites) => {
+        console.log(invites)
         return (
             <div className="ui four column grid">
-                {invites.map((invite) => this.renderInvite(invite.id, invite.sender, invite.room))}
+                {invites.map((invite) => this.renderInvite(invite.id, invite.sender, invite.room, invite.content))}
             </div>
         )
     }

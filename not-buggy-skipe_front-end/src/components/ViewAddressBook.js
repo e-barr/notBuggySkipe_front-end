@@ -81,7 +81,11 @@ class ViewAddressBook extends Component {
                         </button>
                 <div className="ui cards">
                     {this.renderContacts(contacts)}
+                    <br></br>
+                    <br></br>
                 </div>
+                <br></br>
+                <br></br>
                 <br></br>
                 <br></br>
                 <button
