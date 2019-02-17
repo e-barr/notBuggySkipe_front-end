@@ -56,8 +56,8 @@ class SignUpForm extends Component {
                     type="text"
                 />
                 <Field
-                    name="imageUrl"
-                    label="imageUrl"
+                    name="image_url"
+                    label="image url"
                     component={renderField}
                     type="text"
                 />
@@ -82,7 +82,7 @@ class SignUpForm extends Component {
     }
 }
 
-const validate = ({ email, username, password, confirmPassword, city, country, imageUrl }) => {
+const validate = ({ email, username, password, confirmPassword, city, country, image_url }) => {
     const errors = {}
 
     if (!email) {
@@ -98,7 +98,7 @@ const validate = ({ email, username, password, confirmPassword, city, country, i
     }
 
     if (password !== confirmPassword) {
-        errors.confirmPassword = 'Your passwords do not match'
+        errors['confirmPassword'] = 'Your passwords do not match'
     }
 
     if (!city) {
@@ -109,8 +109,8 @@ const validate = ({ email, username, password, confirmPassword, city, country, i
         errors.country = 'You must enter a country'
     }
 
-    if (!imageUrl) {
-        errors.imageUrl = 'You must enter an image url.'
+    if (!image_url) {
+        errors['image_url'] = 'You must enter an image url.'
     }
 
     return errors
