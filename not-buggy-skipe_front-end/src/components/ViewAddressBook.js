@@ -72,7 +72,7 @@ class ViewAddressBook extends Component {
         const contacts = this.props.contacts
         return (
             <div className="ui raised padded container segment">
-                    <h1>AddressBook</h1><button 
+                    <h1>Address Book</h1><button 
                         className="circular ui right floated icon button"
                         style={{ marginTop: '-45px', marginRight: '5px'}}
                         onClick={this.props.toggleAddContacts}
