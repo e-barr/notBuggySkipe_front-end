@@ -26,12 +26,12 @@ class App extends Component {
         <div className="ui container">
             <Header />
             <Switch>
-              <Route path="/" component={About} />
               <Route path="/main" exact component={Content} />
               <Route path="/login" component={LoginForm} exact />
               <Route path="/about" component={About} exact />
               <Route path="/contact" component={ContactUs} />
               <Route path="/signup" component={SignUpForm} />
+              <Route path="/" component={About} />
             </Switch>
         </div>
       </div>
