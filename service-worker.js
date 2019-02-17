@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/notBuggySkipe_front-end/precache-manifest.e76a32ed09c9ba797ffb80d8dcd3796b.js"
+  "/notBuggySkipe_front-end/precache-manifest.473c04fd1cae67401c3e13b61858e417.js"
 );
 
 workbox.clientsClaim();
