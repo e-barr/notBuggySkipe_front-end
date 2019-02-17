@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { toggleShowInvites, deleteInvite, startMeeting } from '../actions'
 
 class ViewInvites extends Component {
-    renderInvite = (inviteId, otherUser, room, content) => {
+    renderInvite = (inviteId, otherUser, room, message) => {
         const { image_url, username } = otherUser
 
         return (
@@ -24,7 +24,7 @@ class ViewInvites extends Component {
                         <div className="ui attached segment" >
                             <div style={{ textAlign: 'center', textOverflow: 'clip'}}>
                                 {room.name}<br></br>
-                                {content.length === 0 ? '---' : content }
+                                {message === "" ? '---' : message }
                             </div>
                         </div>
                             <div className="ui two bottom attached buttons">
@@ -45,10 +45,12 @@ class ViewInvites extends Component {
     }
 
     renderReceivedInvites = (invites) => {
-        console.log(invites)
         return (
             <div className="ui four column grid">
-                {invites.map((invite) => this.renderInvite(invite.id, invite.sender, invite.room, invite.content))}
+                {invites.map((invite) => {
+                    const message = invite.content || ""
+                    return this.renderInvite(invite.id, invite.sender, invite.room, message)
+                })}
             </div>
         )
     }
@@ -56,7 +58,9 @@ class ViewInvites extends Component {
     renderSentInvites = (invites) => {
         return (
             <div className="ui four column grid">
-                {invites.map((invite) => this.renderInvite(invite.id, invite.receiver, invite.room))}
+                {invites.map((invite) => {
+                    const message = invite.content || ""
+                    return this.renderInvite(invite.id, invite.receiver, invite.room, message)})}
             </div>
         )
     }
