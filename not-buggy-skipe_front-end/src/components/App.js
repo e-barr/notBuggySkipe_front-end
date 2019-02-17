@@ -26,7 +26,7 @@ class App extends Component {
         <div className="ui container">
             <Header />
             <Switch>
-              <Route path="/" exact component={About} />
+              <Route path="/" component={About} />
               <Route path="/main" exact component={Content} />
               <Route path="/login" component={LoginForm} exact />
               <Route path="/about" component={About} exact />

@@ -1,6 +1,6 @@
-# NotBuggySkipe
+# TwoChat (formerly notBuggySkipe)
 
-This is a video chat app for one-on-one calls created with **React**, **JavaScript**, and styled with plain **HTML/CSS**. The front-end relies on **JWT tokens** to store user information, and the <a href="https://github.com/e-barr/notBuggySkipe_back-end" target="_blank">back-end</a> utilizes **Ruby on Rails** and PostgreSQL to store the information in a server. The <a href="https://not-buggy-skipe.herokuapp.com/" target="_blank">back-end</a> is deployed to Heroku, and the front-end is hosted on github pages <a href="https://e-barr.github.io/notBuggySkipe_front-end/" target="_blank">here</a>.
+This is a video chat app for one-on-one calls created with **React**, **JavaScript**, and styled with plain **HTML/CSS**. The front-end relies on **JWT tokens** to store user information, and the <a href="https://github.com/e-barr/notBuggySkipe_back-end" target="_blank">back-end</a> utilizes **Ruby on Rails** and **PostgreSQL** to store the information in a server. The <a href="https://not-buggy-skipe.herokuapp.com/" target="_blank">back-end</a> is deployed to Heroku, and the front-end is hosted on github pages <a href="https://e-barr.github.io/notBuggySkipe_front-end/" target="_blank">here</a>.
 
 <a href="https://e-barr.github.io/notBuggySkipe_front-end/" target="_blank">Live site</a>
 
