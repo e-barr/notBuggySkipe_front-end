@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "a2257f2ffaf274d18b98",
+    "revision": "2b6416b3a9ebc52c2224",
     "url": "/notBuggySkipe_front-end/static/css/main.0590692e.chunk.css"
   },
   {
-    "revision": "a2257f2ffaf274d18b98",
-    "url": "/notBuggySkipe_front-end/static/js/main.a2257f2f.chunk.js"
+    "revision": "2b6416b3a9ebc52c2224",
+    "url": "/notBuggySkipe_front-end/static/js/main.2b6416b3.chunk.js"
   },
   {
     "revision": "e41208edbba245195143",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/notBuggySkipe_front-end/static/js/2.59fc7a0f.chunk.js"
   },
   {
-    "revision": "3f9446e175adcb3b94d38b7c44b1128d",
+    "revision": "b86fa969e176333e2e2c9642270e979c",
     "url": "/notBuggySkipe_front-end/index.html"
   }
 ];
