@@ -24,5 +24,6 @@ Technologies used include:
 * **Axios**
 * **Semantic UI**
 * **JavaScript**
+* **TokBox Embed**
 * **Ruby**
 * **Ruby on Rails** (backend)
